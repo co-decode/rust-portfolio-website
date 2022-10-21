@@ -7,3 +7,12 @@ edition = "2021"
 
 [dependencies]
 yew = { git = "https://github.com/yewstack/yew/", features = ["csr"] }
+
+[dependencies.web-sys]
+version = "0.3.60"
+# We need to enable all the web-sys features we want to use!
+features = [
+    "console",
+    "Document",
+    "Window",
+]

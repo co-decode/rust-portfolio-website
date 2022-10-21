@@ -17,7 +17,7 @@ fn App() -> Html {
     // };
 
     html! {
-        <div>
+        <div class="main">
             <navbar::Navbar />
             <banner::Banner />
             <projects::Projects />

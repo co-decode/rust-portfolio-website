@@ -3,7 +3,7 @@ use yew::{function_component, Html, html};
 #[function_component(Banner)]
 pub fn banner() -> Html {
     html! { 
-        <div class="banner-outer">
+        <div class="banner" id="banner">
         <div class="banner-inner">
             <div class="banner-header">
             <h1 class="banner-title">{"Cody Ross"}</h1>

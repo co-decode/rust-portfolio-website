@@ -1,14 +1,26 @@
-use yew::{function_component, Html, html};
+use yew::{function_component, Html, html, Callback};
+use web_sys::{Window, console};
 
 #[function_component(Navbar)]
 pub fn return_navbar() -> Html {
+
     html! { 
         <div class="navbar">
-            <div class="navbar-home">{"Cody Ross, software developer"}</div>
+            <div class="navbar-home">
+            <div class="navbar-home-name"> 
+                {"CODY ROSS"}
+            </div>
+            <div class="navbar-home-title">
+                {"SOFTWARE DEVELOPER"}
+            </div>
+            </div>
             <div class="navbar-tail">
                 <div class="navbar-resume">{"Resume"}</div>
                 <div class="navbar-github">{"Github"}</div>
-                <div class="navbar-contact">{"Contact"}</div>
+                <div 
+                    onclick={move |_| {console::log_1(&format!("what the hell").into())}} 
+                    class="navbar-contact">{"Contact"}
+                </div>
             </div>
         </div>
     }

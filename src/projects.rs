@@ -3,7 +3,7 @@ use yew::{function_component, Html, html};
 #[function_component(Projects)]
 pub fn projects() -> Html { 
     html! {
-        <div class="projects-container">
+        <div class="projects-container" id="projects">
             <div class="projects-1">{"Project 1"}</div>
             <div class="projects-2">{"Project 2"}</div>
             <div class="projects-3">{"Project 3"}</div>

@@ -3,7 +3,7 @@ use yew::{function_component, Html, html};
 #[function_component(Contact)]
 pub fn contact() -> Html {
     html! {
-        <div class="contact">
+        <div id="contact" class="contact">
         <div class="contact-inner">
         <form>
             <div class="contact-fields">
