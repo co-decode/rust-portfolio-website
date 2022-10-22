@@ -1,8 +1,10 @@
 use yew::{function_component, Html, html, Callback};
-use web_sys::{Window, console};
+use web_sys::{Window, console, window};
 
 #[function_component(Navbar)]
 pub fn return_navbar() -> Html {
+
+    let wind = window().unwrap();
 
     html! { 
         <div class="navbar">
@@ -18,7 +20,7 @@ pub fn return_navbar() -> Html {
                 <div class="navbar-resume">{"Resume"}</div>
                 <div class="navbar-github">{"Github"}</div>
                 <div 
-                    onclick={move |_| {console::log_1(&format!("what the hell").into())}} 
+                    onclick={move |_| {console::log_1(&format!("{:?}", wind.inner_width()).into())}} 
                     class="navbar-contact">{"Contact"}
                 </div>
             </div>
