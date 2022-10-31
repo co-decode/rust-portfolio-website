@@ -1,0 +1,52 @@
+.banner {
+    padding: 4em 0 2em 0;
+    height: calc(100vh - 50px);
+    box-sizing: border-box;
+}
+.banner-inner {
+    padding: 0 4em;
+}
+.banner-title {
+    width: 100%;
+}
+.banner-title::after {
+    content: '';
+    background-color: black;
+    display: block;
+    height: 2px;
+    margin: 0.325em 0 0.5em 0;
+    width: 100%;
+}
+
+.banner-actions {
+    display: flex;
+    gap: 20px;
+    margin-bottom: 20px;
+}
+
+.banner-actions > div {
+    border: 2px solid black;
+    padding:2px 4px;
+}
+/* 
+.banner-resume {
+}
+.banner-projects {
+}
+ */
+.banner-skills-container {
+    display: flex;
+    flex-direction:column;
+    gap: 10px;
+}
+.banner-skills-container > div {
+    width: 100%;
+    height: 50px;
+    border: 2px black solid;
+}
+/* 
+.banner-skills-top {
+}
+.banner-skills-top {
+}
+*/

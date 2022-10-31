@@ -1,0 +1,16 @@
+
+/* PROJECTS */
+.projects-container {
+    display:flex;
+    flex-direction: column;
+    flex-wrap:wrap;
+    height: 900px;
+}
+.projects-container > div {
+    width:50%;
+    height: 300px;
+    background-color: #B9470050;
+}
+.projects-container > div:nth-child(even) {
+    background-color:#888B8D50;
+}

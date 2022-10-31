@@ -1,0 +1,49 @@
+@use "./components";
+
+html {
+    scrollbar-color:#c45508 #888B8D50;
+    scrollbar-width:thin;
+    scroll-behavior: smooth;
+}
+html::-webkit-scrollbar {
+    background-color:#543631;
+    width: 10px;
+}
+html::-webkit-scrollbar-thumb {
+    background-color:#c45508;
+}
+
+body {
+    margin:0;
+    font-family:"Source Sans Pro";
+    background-color: #fffcc9;
+
+    font-size: 17pt;
+
+    @media ( width < 1680px) {
+        font-size: 14pt;
+    }
+    @media ( width < 1280px) {
+        font-size: 12pt;
+    }
+    @media ( width < 360px) {
+        font-size: 11pt;
+    }
+    
+}
+a {
+    color:inherit;
+    text-decoration:none;
+}
+.main {
+    display: flex;
+    flex-direction: column;
+}
+/* 
+xlarge:    (1281px,   1680px   ),
+large:     (981px,    1280px   ),
+medium:    (737px,    980px    ),
+small:     (481px,    736px    ),
+xsmall:    (361px,    480px    ),
+xxsmall:   (null,     360px    )
+*/
