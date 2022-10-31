@@ -8,11 +8,15 @@
   align-items: center;
   box-shadow: 0 0.1px 5px #543631;
   font-weight: 600;
+  position: fixed;
   color: #543631;
 }
 .navbar a {
   font-size: 0.8em;
   letter-spacing: 0.25em;
+}
+.navbar.anchor {
+  position: static;
 }
 
 .navbar-home {
@@ -80,6 +84,12 @@ a > img {
   }
 }
 
+.img {
+  filter: brightness(0) saturate(100%) invert(16%) sepia(8%) saturate(3420%) hue-rotate(320deg) brightness(103%) contrast(79%);
+}
+.img:hover {
+  filter: brightness(0) saturate(100%) invert(32%) sepia(97%) saturate(2624%) hue-rotate(17deg) brightness(93%) contrast(94%);
+}
 @media (width > 424px) {
   .img {
     display: none !important;

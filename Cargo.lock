@@ -463,6 +463,7 @@ dependencies = [
 name = "rust-portfolio"
 version = "0.1.0"
 dependencies = [
+ "gloo-events",
  "web-sys",
  "yew",
 ]
