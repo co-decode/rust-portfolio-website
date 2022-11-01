@@ -1,6 +1,6 @@
 use yew::prelude::*;
 use gloo_events::EventListener;
-use web_sys::{window, console};
+use web_sys::{window, /* console */};
 
 mod navbar;
 mod banner;
@@ -43,7 +43,6 @@ fn App() -> Html {
     html! {
         <div class="main">
             <navbar::Navbar scr_y={*scr_y.as_ref().unwrap()}/>
-            <button onclick={move |_| {console::log_1(&format!("scroll: {:?}", window().unwrap().scroll_y()).into())}}>{"Click Me"}</button>
             <banner::Banner />
             <projects::Projects />
             <contact::Contact />

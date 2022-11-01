@@ -16,4 +16,6 @@ features = [
     "console",
     "Document",
     "Window",
+    "Element",
+    "DomTokenList",
 ]

@@ -1,3 +1,7 @@
+@keyframes reveal-header {
+    0% { top: -4em; opacity: 0; }
+    100% { top: 0; opacity: 1; }
+}
 .navbar {
     height:3.25em;
     letter-spacing:0.25em;
@@ -9,14 +13,22 @@
     box-shadow: 0 0.1px 5px #543631;
     font-weight:600;
     position:fixed;
-    color:#543631 ;
+    color:#543631;
+
+
+    @media (width < 736px) {
+        height:2.75em;
+    }
 
     & a {
-        font-size:0.8em;
+        // font-size:0.8em;
         letter-spacing:0.25em;
     }
     &.anchor {
-        position:static;
+        position:absolute;
+    }
+    &.fixed {
+        animation: reveal-header ease 0.5s;
     }
 }
 .navbar-home {

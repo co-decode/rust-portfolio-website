@@ -7,16 +7,20 @@ pub fn banner() -> Html {
         <div class="banner-inner">
             <div class="banner-header">
             <h1 class="banner-title">{"Cody Ross"}</h1>
-            <p class="banner-subtitle">{"Software Developer"}</p>
+            <p class="banner-subtitle">{"SOFTWARE DEVELOPER"}</p>
             </div>
 
             <div class="banner-actions">
-                <div class="banner-resume">{"Resume"}</div>
-                <div class="banner-projects">{"My Projects \u{27a4}"}</div>
+                <div class="banner-resume">
+                    <a href="/assets/Cody Ross - Resume - 031022.pdf" target="_blank">
+                    {"MY RESUME"}</a></div>
+                <div class="banner-projects">
+                    <a href="#projectsMarker">
+                    {"MY PROJECTS \u{27a4}"}</a></div>
             </div>
 
             <div class="banner-skills-container">
-                {"My Skills"}
+                <h4>{"My Skills"}</h4>
                 <div class="banner-skills-top">
                 </div>
                 <div class="banner-skills-bottom">

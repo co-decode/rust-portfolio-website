@@ -2,15 +2,40 @@
 /* PROJECTS */
 .projects-container {
     display:flex;
-    flex-direction: column;
+    flex-direction: row;
     flex-wrap:wrap;
-    height: 900px;
+    height: auto;
+
+    // @media (width < 550px) {
+    //     height: 1800px;
+    // }
 }
 .projects-container > div {
     width:50%;
     height: 300px;
     background-color: #B9470050;
+    @media (width < 550px) {
+        width: 100%;
+        &:nth-child(even) {
+            background-color:#888B8D50;
+        }
+    }
+    
 }
-.projects-container > div:nth-child(even) {
-    background-color:#888B8D50;
+@media (width > 549px) {
+    .projects-container > div:nth-child(4n - 2) {
+        background-color:#888B8D50;
+    }
+    .projects-container > div:nth-child(4n + 1) {
+        background-color:#888B8D50;
+    } 
+}
+
+
+#projectsMarker {
+    position:absolute;
+    top: calc(100vh - 4em);
+    @media (width < 736px) {
+        top: calc(100vh - 3.5em);
+    }
 }
