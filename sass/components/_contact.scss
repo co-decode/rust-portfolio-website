@@ -35,8 +35,12 @@ form textarea {
 .contact-fields {
     display: flex;
     flex-wrap:wrap;
-    margin-right:2em;
+    margin-right:3em;
     margin-left: -1.5em;
+
+    @media (width<981px) {
+        margin-right: 0;
+    }
 }
 .contact-fields > div {
     display:flex;
@@ -46,6 +50,9 @@ form textarea {
 }
 .contact-half-field {
     width: 50%;
+    @media (width< 481px) {
+        width:100%;
+    }
 }
 .contact-field {
     width: 100%;
@@ -56,13 +63,14 @@ form textarea {
     border: 2px solid black;
 }
 .contact-buttons {
-    padding-top: 1em;
+    padding-top: 2em;
     display: flex;
-    gap: 10px;
+    gap: 20px;
 }
 .contact-buttons > button {
     padding:0 1.75em;
     height:3.5em;
+    cursor:pointer;
 }
 .contact-submit {
     background-color:black;
