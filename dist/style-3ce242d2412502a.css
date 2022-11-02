@@ -20,6 +20,7 @@
   font-weight: 600;
   position: fixed;
   color: #543631;
+  z-index: 1001;
 }
 @media (width < 736px) {
   .navbar {
@@ -236,6 +237,9 @@ a > img {
     overflow-x: scroll;
     scrollbar-width: none;
   }
+  .banner-skills-container > div::-webkit-scrollbar {
+    display: none;
+  }
 }
 
 .banner-skills-bottom {
@@ -358,6 +362,7 @@ form textarea {
 .contact-buttons {
   padding-top: 2em;
   display: flex;
+  flex-wrap: wrap;
   gap: 20px;
 }
 
@@ -386,30 +391,62 @@ form textarea {
 }
 
 .projects-container > div {
+  position: relative;
   width: 50%;
-  height: 300px;
-  background-color: rgba(185, 71, 0, 0.3137254902);
-  padding: 4em 3em 2em 3em;
+  height: clamp(23em, 40vh, 40em);
+  display: flex;
+  align-items: center;
+  padding: 4em 4em 2em 4em;
   box-sizing: border-box;
+}
+.projects-container > div::before {
+  opacity: 0.85;
+  transition: opacity 0.5s ease;
+  background-color: #B94700;
+  content: "";
+  display: block;
+  height: 100%;
+  width: 100%;
+  left: 0;
+  top: 0;
+  position: absolute;
+  z-index: 1;
+}
+.projects-container > div:hover::before {
+  opacity: 0;
+}
+@media (width < 1280px) {
+  .projects-container > div {
+    padding: 4em 3em 2em 3em;
+    height: clamp(20em, 30vh, 30em);
+  }
+}
+@media (width < 736px) {
+  .projects-container > div {
+    padding: 3em 1.5em 1em 1.5em;
+    height: 16em;
+  }
 }
 @media (width < 550px) {
   .projects-container > div {
+    height: 20em;
     width: 100%;
   }
-  .projects-container > div:nth-child(even) {
-    background-color: rgba(136, 139, 141, 0.3137254902);
+  .projects-container > div:nth-child(even)::before {
+    background-color: #888B8D;
   }
 }
 
 @media (width > 549px) {
-  .projects-container > div:nth-child(4n-2) {
-    background-color: rgba(136, 139, 141, 0.3137254902);
+  .projects-container > div:nth-child(4n-2)::before {
+    background-color: #888B8D;
   }
-  .projects-container > div:nth-child(4n+1) {
-    background-color: rgba(136, 139, 141, 0.3137254902);
+  .projects-container > div:nth-child(4n+1)::before {
+    background-color: #888B8D;
   }
 }
 .project-inner {
+  z-index: 10;
   margin-bottom: 2em;
 }
 .project-inner h3::after {
@@ -423,9 +460,57 @@ form textarea {
 .project-inner a {
   letter-spacing: 0.025em;
 }
+.project-inner a:hover {
+  color: #c45508;
+  cursor: pointer;
+}
 .project-inner .project-nav {
   display: flex;
   gap: 1em;
+  font-size: 1.25em;
+}
+
+.project-video {
+  position: absolute;
+  top: 0;
+  left: 0;
+  width: 100%;
+  height: 100%;
+}
+.project-video video {
+  object-fit: fill;
+  height: 100%;
+  width: 100%;
+}
+
+.techTags {
+  position: absolute;
+  top: 10px;
+  left: 0;
+  box-sizing: border-box;
+  padding-left: 10px;
+  display: flex;
+  gap: 10px;
+  width: 100%;
+  flex-wrap: wrap;
+  z-index: 100;
+}
+@media (width < 570px) {
+  .techTags {
+    padding-left: 5px;
+  }
+}
+
+.techTags > span > img {
+  width: 24px;
+  height: 24px;
+  filter: brightness(0) saturate(100%);
+}
+@media (width < 361px) {
+  .techTags > span > img {
+    width: 20px;
+    height: 20px;
+  }
 }
 
 #projectsMarker {

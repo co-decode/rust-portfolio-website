@@ -110,6 +110,10 @@
         animation:none;
         overflow-x: scroll;
         scrollbar-width: none;
+
+        &::-webkit-scrollbar {
+            display:none;
+        }
     }
 }
 // .banner-skills-container-inner {

@@ -55,7 +55,7 @@ pub fn return_navbar(props: &Props) -> Html {
 					<img src="/assets/images/github.svg" />
 				</a>
                 <a class="navbar-contact img" href="#contact">
-					<img src="/assets/images/email1.svg" />
+					<img src="/assets/images/email.svg" />
 				</a>
             </div>
         </div>
