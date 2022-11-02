@@ -204,19 +204,73 @@ a > img {
   display: flex;
   flex-direction: column;
   gap: 2em;
+  overflow-x: hidden;
+  position: relative;
+}
+@media (width < 737px) {
+  .banner-skills-container {
+    gap: 3em;
+    padding-top: 1em;
+  }
 }
 
 .banner-skills-container > div {
   height: 5em;
-  border: 2px black solid;
+  width: 200%;
+  position: relative;
+  display: flex;
+  justify-content: space-around;
+}
+.banner-skills-container > div p {
+  font-weight: 300;
+}
+.banner-skills-container > div:hover {
+  animation-play-state: paused;
+}
+@media (width < 981px) {
+  .banner-skills-container > div {
+    justify-content: space-between;
+    width: 100%;
+    gap: 20px;
+    animation: none;
+    overflow-x: scroll;
+    scrollbar-width: none;
+  }
 }
 
-/* 
-.banner-skills-top {
+.banner-skills-bottom {
+  animation: infiniScroll infinite reverse linear 30s;
 }
+
 .banner-skills-top {
+  animation: infiniScroll infinite linear 30s;
 }
-*/
+
+@keyframes infiniScroll {
+  0% {
+    left: 0;
+  }
+  100% {
+    left: -100%;
+  }
+}
+.banner-svg {
+  display: flex;
+  flex-direction: column;
+  align-items: center;
+  justify-content: space-around;
+}
+.banner-svg > img {
+  width: 50px;
+  height: 50px;
+  filter: brightness(0) saturate(100%);
+}
+@media (width < 981px) {
+  .banner-svg.duplicate {
+    display: none;
+  }
+}
+
 form input, form textarea {
   background-color: #FED43F;
   border: none;
@@ -231,6 +285,8 @@ form input:focus, form textarea:focus {
 .contact {
   width: 100%;
   height: calc(100vh - 3.25em);
+  display: flex;
+  align-items: center;
 }
 @media (width < 736px) {
   .contact {
@@ -239,6 +295,7 @@ form input:focus, form textarea:focus {
 }
 
 .contact-inner {
+  width: 100%;
   margin: 3em;
 }
 @media (width < 736px) {
@@ -332,6 +389,8 @@ form textarea {
   width: 50%;
   height: 300px;
   background-color: rgba(185, 71, 0, 0.3137254902);
+  padding: 4em 3em 2em 3em;
+  box-sizing: border-box;
 }
 @media (width < 550px) {
   .projects-container > div {
@@ -350,6 +409,25 @@ form textarea {
     background-color: rgba(136, 139, 141, 0.3137254902);
   }
 }
+.project-inner {
+  margin-bottom: 2em;
+}
+.project-inner h3::after {
+  content: "";
+  height: 2px;
+  margin: 0.325em 0 0.5em 0;
+  width: 100%;
+  background-color: black;
+  display: block;
+}
+.project-inner a {
+  letter-spacing: 0.025em;
+}
+.project-inner .project-nav {
+  display: flex;
+  gap: 1em;
+}
+
 #projectsMarker {
   position: absolute;
   top: calc(100vh - 4em);
@@ -377,7 +455,7 @@ html::-webkit-scrollbar-thumb {
 
 body, textarea, input {
   margin: 0;
-  font-family: "Source Sans Pro";
+  font-family: "Source Sans Pro", Helvetica, sans-serif;
   background-color: #fffcc9;
   font-size: 17pt;
   font-weight: 600;
@@ -398,6 +476,14 @@ body, textarea, input {
   }
 }
 
+h1, h4, h3, p {
+  margin: 0;
+}
+
+h1, h3, h4 {
+  font-weight: 600;
+}
+
 a, label, button {
   color: inherit;
   text-decoration: none;
@@ -408,14 +494,14 @@ a, label, button {
 
 h1 {
   font-size: 2.5em;
-  font-weight: 600;
-  margin: 0;
+}
+
+h3 {
+  font-size: 2.2em;
 }
 
 h4 {
   font-size: 1.1em;
-  font-weight: 600;
-  margin: 0;
 }
 
 .main {

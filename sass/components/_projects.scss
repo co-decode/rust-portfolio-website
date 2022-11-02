@@ -14,6 +14,9 @@
     width:50%;
     height: 300px;
     background-color: #B9470050;
+
+    padding: 4em 3em 2em 3em;
+    box-sizing: border-box;
     @media (width < 550px) {
         width: 100%;
         &:nth-child(even) {
@@ -29,6 +32,26 @@
     .projects-container > div:nth-child(4n + 1) {
         background-color:#888B8D50;
     } 
+}
+
+.project-inner {
+    margin-bottom:2em;
+    h3::after {
+        content: "";
+        height: 2px;
+        margin: 0.325em 0 0.5em 0;
+        width:100%;
+        background-color: black;
+        display: block;
+
+    }
+    a {
+        letter-spacing: 0.025em;
+    }
+    .project-nav {
+        display:flex;
+        gap:1em;
+    }
 }
 
 

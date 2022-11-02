@@ -80,15 +80,76 @@
     display: flex;
     flex-direction:column;
     gap: 2em;
+    overflow-x:hidden;
+    position:relative;
+    @media (width < 737px) {
+        gap:3em;
+        padding-top:1em;
+    }
 }
 .banner-skills-container > div {
-    // width: 100%;
     height: 5em;
-    border: 2px black solid;
+    // border: 2px black solid;
+    width: 200%;
+    position:relative;
+    display:flex;
+    justify-content: space-around;
+
+    p {
+        font-weight: 300;
+    }
+
+    &:hover {
+        animation-play-state:paused;
+    }
+
+    @media (width < 981px) {
+        justify-content: space-between;
+        width: 100%;
+        gap:20px;
+        animation:none;
+        overflow-x: scroll;
+        scrollbar-width: none;
+    }
 }
-/* 
+// .banner-skills-container-inner {
+//     width: 100%;
+//     overflow-x:hidden;
+// }
+
+.banner-skills-bottom {
+    animation: infiniScroll infinite reverse linear 30s;
+
+}
+
 .banner-skills-top {
+    animation: infiniScroll infinite linear 30s;
 }
-.banner-skills-top {
+
+@keyframes infiniScroll {
+    0% {
+        left: 0
+    }
+    100% {
+        left: -100%;
+    }
 }
-*/
+
+.banner-svg{
+    display:flex;
+    flex-direction: column;
+    align-items: center;
+    justify-content: space-around;
+    & > img {
+        width:50px;
+        height:50px;
+
+        filter:brightness(0) saturate(100%);
+    }
+
+    @media (width < 981px) {
+        &.duplicate {
+            display:none;
+        }
+    }
+}
