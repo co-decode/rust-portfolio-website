@@ -23,4 +23,5 @@ features = [
     "DomTokenList",
     "HtmlMediaElement",
     "HtmlDivElement",
+    "HtmlCollection",
 ]

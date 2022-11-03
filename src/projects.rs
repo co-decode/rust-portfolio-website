@@ -1,7 +1,7 @@
 use yew::{function_component, Html, html, Callback, MouseEvent, /* use_effect */};
 use yew_router::prelude::*;
 // use gloo_events::EventListener;
-use web_sys::{window, HtmlMediaElement, EventTarget};
+use web_sys::{/* window, */ HtmlMediaElement, Element, EventTarget};
 use wasm_bindgen::JsCast;
 
 use crate::Route;
@@ -12,9 +12,9 @@ pub fn projects() -> Html {
 
     let onclick:Callback<MouseEvent> = Callback::from(move |_| navigator.push(&Route::Videos));
 
-    let document = window().unwrap().document().unwrap();
+    // let document = window().unwrap().document().unwrap();
 
-        let lifting_history = document.get_element_by_id("liftingRecord");
+        // let lifting_history = document.get_element_by_id("liftingRecord");
         // lifting_history.unwrap().muted();
     // let onmouseover = Callback::from(move |_| lifting_history.unwrap().dyn_into::<web_sys::HtmlMediaElement>().unwrap().play().unwrap());
 
@@ -56,25 +56,31 @@ pub fn projects() -> Html {
     //     }
     // });
 
-    let on_mouseover = {
-        // let input_value_handle = input_value_handle.clone();
-
+    let on_mousein = {
         Callback::from(move |e: MouseEvent| {
-            // When events are created the target is undefined, it's only
-            // when dispatched does the target get added.
             let target: Option<EventTarget> = e.target();
-            // Events can bubble so this listener might catch events from child
-            // elements which are not of type HtmlInputElement
-            let input = target.and_then(|t| t.dyn_into::<HtmlMediaElement>().ok());
-
-            if let Some(input) = input {
-                // input.play().unwrap();
-                input.set_muted(true);
-                wasm_bindgen_futures::JsFuture::from(input.play().unwrap());
-                // let _future = async{
-                //         let _result= wasm_bindgen_futures::JsFuture::from(input.play().unwrap()).await;
-                //         _result.unwrap()
-                //     };
+            let input = target.and_then(|t| t.dyn_into::<Element>().ok());
+            let video = input.unwrap().get_elements_by_tag_name("video")
+                .get_with_index(0).expect("There should be a video element")
+                .dyn_into::<HtmlMediaElement>().ok();
+            if let Some(video) = video {
+                video.set_muted(true);
+                let _result = wasm_bindgen_futures::JsFuture::from(video.play().unwrap());
+            }
+        })
+    };
+    let on_mouseout = {
+        Callback::from(move |e: MouseEvent| {
+            let target: Option<EventTarget> = e.target();
+            let input = target.and_then(|t| t.dyn_into::<Element>().ok());
+            let video = input.unwrap().get_elements_by_tag_name("video")
+                .get_with_index(0).expect("There should be a video element")
+                .dyn_into::<HtmlMediaElement>().ok();
+            if let Some(video) = video {
+                // video.set_muted(true);
+                // let _result = wasm_bindgen_futures::JsFuture::from(
+                    video.pause().unwrap()
+                // );
             }
         })
     };
@@ -84,7 +90,7 @@ pub fn projects() -> Html {
         <div class="projects-container" id="projects">
             <a id="projectsMarker"></a> 
             /* Project 1 */
-            <div class="projects-1" >
+            <div class="projects-1" onmouseenter={on_mousein} onmouseleave={on_mouseout}>
                 <div class="project-inner">
                 <h3><a>{"Weightlifting Log"}</a></h3>
                 <div class="project-nav">
@@ -95,7 +101,7 @@ pub fn projects() -> Html {
                 </div>
 
                 <div class="project-video">
-                <video id="liftingRecord" loop={true} muted={true} onmouseover={on_mouseover}>
+                <video id="liftingRecord" loop={true} muted={true}>
                     <source src="/assets/video/liftingHistoryWebM.webm" type="video/webm"/>
                     <source src="/assets/video/liftingHistoryMP4.mp4" type="video/mp4"/>
                     <p>{"Your browser doesn't support HTML5 video."}</p>
@@ -162,7 +168,7 @@ pub fn projects() -> Html {
                 </div>
 
                 <div class="project-video">
-                    <video id="storeFront" loop={true}>
+                    <video id="storeFront" class="storeFront" loop={true}>
                         <source src="/assets/video/storeFrontWebM.webm" type="video/webm"/>
                         <source src="/assets/video/storeFrontMute.mp4" type="video/mp4"/>
                         <p>{"Your browser doesn't support HTML5 video."}</p>
