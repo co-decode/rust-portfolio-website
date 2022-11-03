@@ -472,6 +472,7 @@ form textarea {
 
 .project-video {
   position: absolute;
+  z-index: 10000;
   top: 0;
   left: 0;
   width: 100%;
@@ -521,6 +522,87 @@ form textarea {
   #projectsMarker {
     top: calc(100vh - 3.5em);
   }
+}
+
+.navbar.videos-navbar {
+  position: relative;
+}
+@media (width < 451px) {
+  .navbar.videos-navbar .word {
+    display: none !important;
+  }
+}
+.navbar.videos-navbar .img {
+  display: flex !important;
+}
+@media (width > 451px) {
+  .navbar.videos-navbar .img {
+    display: none !important;
+  }
+}
+
+.videos-main {
+  display: flex;
+  flex-direction: column;
+  padding: 4em 8vw 2em 7vw;
+}
+@media (width < 736px) {
+  .videos-main {
+    padding: 3em 1.5em 1em 1.5em;
+  }
+}
+.videos-main label {
+  margin-top: 0.5em;
+  margin-bottom: 1em;
+  padding-top: 0.5em;
+}
+
+.videos-title {
+  width: fit-content;
+}
+.videos-title h1::after {
+  content: "";
+  display: block;
+  background-color: black;
+  height: 2px;
+  margin: 0.325em 0 0.5em 0;
+  width: 110%;
+}
+@media (width < 400px) {
+  .videos-title h1::after {
+    width: 100%;
+  }
+}
+
+@media (width < 1681px) {
+  .videos-video {
+    width: 85vw;
+  }
+}
+@media (width < 736px) {
+  .videos-video {
+    width: 100%;
+  }
+}
+
+.videos-buttons-container {
+  display: flex;
+  flex-wrap: wrap;
+  gap: 1em;
+  margin-top: 2em;
+}
+
+.videos-buttons {
+  padding: 0 1.75em;
+  height: 3.5em;
+  line-height: 3.5em;
+  cursor: pointer;
+  border: 1px black solid;
+  transition: all 0.3s;
+}
+.videos-buttons:hover {
+  border-color: orange;
+  color: orange;
 }
 
 html {
