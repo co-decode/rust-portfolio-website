@@ -41,7 +41,7 @@
 }
 .banner-title::after {
     content: '';
-    background-color: black;
+    background-color: var(--text);
     display: block;
     height: 2px;
     margin: 0.325em 0 0.5em 0;
@@ -58,16 +58,15 @@
 }
 
 .banner-actions > div {
-    border: 2px solid black;
+    border: 2px solid var(--text);
     padding:0.5em 1em;
     white-space: nowrap;
     transition: all 0.3s;
     cursor:pointer;
 
     &:hover {
-        color: #c45508;
-        border-color: #c45508;
-        
+        color: var(--hl);
+        border-color: var(--hl);
     }
 }
 /* 
@@ -148,7 +147,7 @@
         width:50px;
         height:50px;
 
-        filter:brightness(0) saturate(100%);
+        // filter:brightness(0) saturate(100%);
     }
 
     @media (width < 981px) {

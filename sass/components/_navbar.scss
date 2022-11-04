@@ -6,14 +6,14 @@
     height:3.25em;
     letter-spacing:0.25em;
     width: 100%;
-    background-color:#FED43F;
+    background-color:var(--m);
     display:flex;
     justify-content: space-between;
     align-items: center;
-    box-shadow: 0 0.1px 5px #543631;
+    box-shadow: 0 0.1px 2px var(--text);
     font-weight:600;
     position:fixed;
-    color:#543631;
+    color:var(--text);
     z-index:1001;
 
 
@@ -40,8 +40,8 @@
     white-space: nowrap;
 }
 .navbar-home-name {
-    color:#FED43F;
-    background-color:#543631;
+    color:var(--m);
+    background-color:var(--text);
     padding: 0 0.125em 0 0.375em;
     transition: background-color 0.5s;
 }
@@ -53,10 +53,10 @@
     }
 }
 .navbar-home:hover > .navbar-home-name {
-    background-color:#c45508;
+    background-color:var(--hl);
 }
 .navbar-home:hover > .navbar-home-title {
-    color:#c45508;
+    color:var(--hl);
 }
 
 .navbar-tail {
@@ -76,7 +76,7 @@
     transition: color 0.3s;
 }
 .navbar-tail > a:hover {
-    color:#c45508;
+    color:var(--hl);
 }
 a > img {
     width: 20px;
@@ -89,9 +89,9 @@ a > img {
     }
 }
 .img {
-    filter: brightness(0) saturate(100%) invert(16%) sepia(8%) saturate(3420%) hue-rotate(320deg) brightness(103%) contrast(79%);
+    filter: brightness(0) saturate(100%) invert(75%) sepia(42%) saturate(2951%) hue-rotate(316deg) brightness(102%) contrast(72%);
     &:hover {
-        filter: brightness(0) saturate(100%) invert(32%) sepia(97%) saturate(2624%) hue-rotate(17deg) brightness(93%) contrast(94%);
+        filter: brightness(0) saturate(100%) invert(42%) sepia(27%) saturate(1391%) hue-rotate(296deg) brightness(97%) contrast(86%);
     }
     @media (width > 424px) {
         display:none !important;

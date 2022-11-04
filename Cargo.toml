@@ -11,6 +11,7 @@ gloo-events = "0.1"
 yew-router = { git = "https://github.com/yewstack/yew.git" }
 wasm-bindgen = "0.2.83"
 wasm-bindgen-futures = "0.4.33"
+js-sys = "0.3.60"
 
 [dependencies.web-sys]
 version = "0.3.60"
@@ -24,4 +25,5 @@ features = [
     "HtmlMediaElement",
     "HtmlDivElement",
     "HtmlCollection",
+    "Node",
 ]

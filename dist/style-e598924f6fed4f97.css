@@ -12,14 +12,14 @@
   height: 3.25em;
   letter-spacing: 0.25em;
   width: 100%;
-  background-color: #FED43F;
+  background-color: var(--m);
   display: flex;
   justify-content: space-between;
   align-items: center;
-  box-shadow: 0 0.1px 5px #543631;
+  box-shadow: 0 0.1px 2px var(--text);
   font-weight: 600;
   position: fixed;
-  color: #543631;
+  color: var(--text);
   z-index: 1001;
 }
 @media (width < 736px) {
@@ -46,8 +46,8 @@
 }
 
 .navbar-home-name {
-  color: #FED43F;
-  background-color: #543631;
+  color: var(--m);
+  background-color: var(--text);
   padding: 0 0.125em 0 0.375em;
   transition: background-color 0.5s;
 }
@@ -62,11 +62,11 @@
 }
 
 .navbar-home:hover > .navbar-home-name {
-  background-color: #c45508;
+  background-color: var(--hl);
 }
 
 .navbar-home:hover > .navbar-home-title {
-  color: #c45508;
+  color: var(--hl);
 }
 
 .navbar-tail {
@@ -88,7 +88,7 @@
 }
 
 .navbar-tail > a:hover {
-  color: #c45508;
+  color: var(--hl);
 }
 
 a > img {
@@ -103,10 +103,10 @@ a > img {
 }
 
 .img {
-  filter: brightness(0) saturate(100%) invert(16%) sepia(8%) saturate(3420%) hue-rotate(320deg) brightness(103%) contrast(79%);
+  filter: brightness(0) saturate(100%) invert(75%) sepia(42%) saturate(2951%) hue-rotate(316deg) brightness(102%) contrast(72%);
 }
 .img:hover {
-  filter: brightness(0) saturate(100%) invert(32%) sepia(97%) saturate(2624%) hue-rotate(17deg) brightness(93%) contrast(94%);
+  filter: brightness(0) saturate(100%) invert(42%) sepia(27%) saturate(1391%) hue-rotate(296deg) brightness(97%) contrast(86%);
 }
 @media (width > 424px) {
   .img {
@@ -165,7 +165,7 @@ a > img {
 
 .banner-title::after {
   content: "";
-  background-color: black;
+  background-color: var(--text);
   display: block;
   height: 2px;
   margin: 0.325em 0 0.5em 0;
@@ -184,15 +184,15 @@ a > img {
 }
 
 .banner-actions > div {
-  border: 2px solid black;
+  border: 2px solid var(--text);
   padding: 0.5em 1em;
   white-space: nowrap;
   transition: all 0.3s;
   cursor: pointer;
 }
 .banner-actions > div:hover {
-  color: #c45508;
-  border-color: #c45508;
+  color: var(--hl);
+  border-color: var(--hl);
 }
 
 /* 
@@ -267,7 +267,6 @@ a > img {
 .banner-svg > img {
   width: 50px;
   height: 50px;
-  filter: brightness(0) saturate(100%);
 }
 @media (width < 981px) {
   .banner-svg.duplicate {
@@ -276,14 +275,14 @@ a > img {
 }
 
 form input, form textarea {
-  background-color: #FED43F;
+  background-color: var(--m);
   border: none;
   letter-spacing: 0.025em;
   font-weight: 300;
   line-height: 1.65;
 }
 form input:focus, form textarea:focus {
-  outline: #543631 2px solid;
+  outline: var(--text) 2px solid;
 }
 
 .contact {
@@ -356,7 +355,7 @@ form textarea {
 .contact-captcha {
   height: 100px;
   width: 300px;
-  border: 2px solid black;
+  border: 2px solid var(--text);
 }
 
 .contact-buttons {
@@ -373,13 +372,13 @@ form textarea {
 }
 
 .contact-submit {
-  background-color: black;
-  color: #FED43F;
+  background-color: var(--text);
+  color: var(--bg);
 }
 
 .contact-clear {
   background-color: transparent;
-  border: 2px black solid;
+  border: 2px var(--text) solid;
 }
 
 /* PROJECTS */
@@ -399,10 +398,13 @@ form textarea {
   padding: 4em 4em 2em 4em;
   box-sizing: border-box;
 }
+.projects-container > div a {
+  transition: color 0.3s;
+}
 .projects-container > div::before {
   opacity: 0.85;
   transition: opacity 0.5s ease;
-  background-color: #B94700;
+  background-color: var(--m);
   content: "";
   display: block;
   height: 100%;
@@ -433,16 +435,16 @@ form textarea {
     width: 100%;
   }
   .projects-container > div:nth-child(even)::before {
-    background-color: #888B8D;
+    background-color: var(--alt);
   }
 }
 
 @media (width > 549px) {
   .projects-container > div:nth-child(4n-2)::before {
-    background-color: #888B8D;
+    background-color: var(--alt);
   }
   .projects-container > div:nth-child(4n+1)::before {
-    background-color: #888B8D;
+    background-color: var(--alt);
   }
 }
 .project-inner {
@@ -454,15 +456,17 @@ form textarea {
   height: 2px;
   margin: 0.325em 0 0.5em 0;
   width: 100%;
-  background-color: black;
+  background-color: var(--text);
   display: block;
+}
+.project-inner h3 {
+  cursor: default;
 }
 .project-inner a {
   letter-spacing: 0.025em;
 }
 .project-inner a:hover {
-  color: #c45508;
-  cursor: pointer;
+  color: var(--hl);
 }
 .project-inner .project-nav {
   display: flex;
@@ -504,13 +508,51 @@ form textarea {
 .techTags > span > img {
   width: 24px;
   height: 24px;
-  filter: brightness(0) saturate(100%);
 }
 @media (width < 361px) {
   .techTags > span > img {
     width: 20px;
     height: 20px;
   }
+}
+
+.portfolio_in_rust {
+  background-image: url("/assets/images/rustacean.png");
+  background-size: 100% 100%;
+}
+.portfolio_in_rust a:hover {
+  color: white;
+}
+
+.lift_equivalence_calculator {
+  background-image: url("/assets/images/weightEquivTitle50-min.png");
+  background-size: 100% 100%;
+}
+.lift_equivalence_calculator:hover {
+  background-image: url("/assets/images/weightEquiv50-min.png");
+  background-size: 100% 100%;
+}
+
+.arithmetic_trainer {
+  background-image: url("/assets/images/arhythmetic50-min.png");
+  background-size: 100% 100%;
+}
+.arithmetic_trainer:hover {
+  background-image: url("/assets/images/arhythmeticSettings50-min.png");
+  background-size: 100% 100%;
+}
+
+.sheet_music_generator {
+  background-image: url("/assets/images/sheetGen50-min.png");
+  background-size: 100% 100%;
+}
+.sheet_music_generator:hover {
+  background-image: url("/assets/images/sheetGenMenu50-min.png");
+  background-size: 100% 100%;
+}
+
+.fitness_store a:hover, .weightlifting_log a:hover {
+  cursor: pointer;
 }
 
 #projectsMarker {
@@ -562,7 +604,7 @@ form textarea {
 .videos-title h1::after {
   content: "";
   display: block;
-  background-color: black;
+  background-color: var(--text);
   height: 2px;
   margin: 0.325em 0 0.5em 0;
   width: 110%;
@@ -596,33 +638,48 @@ form textarea {
   height: 3.5em;
   line-height: 3.5em;
   cursor: pointer;
-  border: 1px black solid;
+  border: 1px var(--text) solid;
   transition: all 0.3s;
 }
 .videos-buttons:hover {
-  border-color: orange;
-  color: orange;
+  border-color: var(--hl);
+  color: var(--hl);
 }
 
 html {
-  scrollbar-color: #c45508 rgba(136, 139, 141, 0.3137254902);
+  /* 
+      Colours used so far:
+      #fffcc9 Light Yellow: background                        -bg
+      #FED43F Yellow      : navbar color, contact color       -m
+      #c45508 Rusty Orange: hover color                       -hl
+      #888B8D Grey        : tiles and scrollbar               -sub
+      #543631 Brown       : Color                             -text
+  */
+  --bg:#1c1e26;
+  --m:#17181f;
+  --hl: #ed1648;
+  --alt:#1c1e26;
+  --sub:#17181f;
+  --text:#db886f;
+  scrollbar-color: var(--text) var(--m);
   scrollbar-width: thin;
   scroll-behavior: smooth;
 }
 
 html::-webkit-scrollbar {
-  background-color: #543631;
+  background-color: var(--m);
   width: 10px;
 }
 
 html::-webkit-scrollbar-thumb {
-  background-color: #c45508;
+  background-color: var(--text);
 }
 
 body, textarea, input {
+  color: var(--text);
   margin: 0;
   font-family: "Source Sans Pro", Helvetica, sans-serif;
-  background-color: #fffcc9;
+  background-color: var(--bg);
   font-size: 17pt;
   font-weight: 600;
 }

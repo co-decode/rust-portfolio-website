@@ -19,11 +19,15 @@
     
     padding: 4em 4em 2em 4em;
     box-sizing: border-box;
+
+    & a {
+        transition: color 0.3s;
+    }
     
     &::before {
         opacity:0.85;
         transition: opacity 0.5s ease;
-        background-color: #B94700;
+        background-color: var(--m);
         content: "";
         display:block;
         height:100%;
@@ -50,17 +54,17 @@
         height:20em;
         width: 100%;
         &:nth-child(even)::before {
-            background-color:#888B8D;
+            background-color:var(--alt);
         }
     }
     
 }
 @media (width > 549px) {
     .projects-container > div:nth-child(4n - 2)::before {
-        background-color:#888B8D;
+        background-color:var(--alt);
     }
     .projects-container > div:nth-child(4n + 1)::before {
-        background-color:#888B8D;
+        background-color:var(--alt);
     } 
 }
 
@@ -72,15 +76,16 @@
         height: 2px;
         margin: 0.325em 0 0.5em 0;
         width:100%;
-        background-color: black;
+        background-color: var(--text);
         display: block;
-
+    }
+    h3 {
+        cursor:default;
     }
     a {
         letter-spacing: 0.025em;
         &:hover {
-            color:#c45508;
-            cursor: pointer;
+            color:var(--hl);
         }
     }
     .project-nav {
@@ -126,11 +131,49 @@
 .techTags > span > img {
 	width:24px;
 	height:24px;
-    filter:brightness(0) saturate(100%);
+    // filter:brightness(0) saturate(100%);
 
     @media (width < 361px) {
         width: 20px;
         height:20px;
+    }
+}
+
+.portfolio_in_rust {
+    background-image: url("/assets/images/rustacean.png");
+    background-size:100% 100%;
+    & a:hover {
+        color:white;
+    }
+}
+.lift_equivalence_calculator {
+    background-image: url("/assets/images/weightEquivTitle50-min.png");
+    background-size:100% 100%;
+    &:hover {
+        background-image: url("/assets/images/weightEquiv50-min.png");
+        background-size:100% 100%;
+    }
+}
+.arithmetic_trainer {
+    background-image: url("/assets/images/arhythmetic50-min.png");
+    background-size:100% 100%;
+    &:hover {
+        background-image: url("/assets/images/arhythmeticSettings50-min.png");
+        background-size:100% 100%;
+    }
+}
+.sheet_music_generator {
+    
+    background-image: url("/assets/images/sheetGen50-min.png");
+    background-size:100% 100%;
+    &:hover {
+        background-image: url("/assets/images/sheetGenMenu50-min.png");
+        background-size:100% 100%;
+    }
+}
+.fitness_store, .weightlifting_log{
+    a:hover {
+        cursor:pointer;
     }
 }
 

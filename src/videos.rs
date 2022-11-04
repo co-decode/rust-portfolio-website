@@ -61,16 +61,16 @@ pub fn videos() -> Html {
                 <source src="/assets/video/sheetGeneratorMP4.mp4" type="video/mp4"/>
                 <p>{"You browser doesn't support HTML5 video."}</p>
             </video>
-            <label id="toLEC">{"LIFT EQUIVALENCE CALCULATOR"}</label>
-            <video class="videos-video" controls={true}>
-                <source src="/assets/video/liftEquivalenceWebM.webm" type="video/webm"/>
-                <source src="/assets/video/liftEquivalenceMP4.mp4" type="video/mp4"/>
-                <p>{"You browser doesn't support HTML5 video."}</p>
-            </video>
             <label id="toA">{"ARHYTHMETIC"}</label>
             <video class="videos-video" controls={true}>
                 <source src="/assets/video/ArhythmeticWebM.webm" type="video/webm"/>
                 <source src="/assets/video/AryhthmeticMP42.mp4" type="video/mp4"/>
+                <p>{"You browser doesn't support HTML5 video."}</p>
+            </video>
+            <label id="toLEC">{"LIFT EQUIVALENCE CALCULATOR"}</label>
+            <video class="videos-video" controls={true}>
+                <source src="/assets/video/liftEquivalenceWebM.webm" type="video/webm"/>
+                <source src="/assets/video/liftEquivalenceMP4.mp4" type="video/mp4"/>
                 <p>{"You browser doesn't support HTML5 video."}</p>
             </video>
             

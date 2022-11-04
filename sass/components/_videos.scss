@@ -37,7 +37,7 @@
         &::after {
             content: '';
             display:block;
-            background-color:black;
+            background-color:var(--text);
             height:2px;
             margin:0.325em 0 0.5em 0;
             width:110%;
@@ -67,10 +67,10 @@
     height:3.5em;
     line-height:3.5em;
     cursor:pointer;
-    border: 1px black solid;
+    border: 1px var(--text) solid;
     transition: all 0.3s;
     &:hover {
-        border-color: orange;
-        color:orange;
+        border-color: var(--hl);
+        color:var(--hl);
     }
 }

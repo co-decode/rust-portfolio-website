@@ -1,12 +1,12 @@
 form input, form textarea {
-    background-color:#FED43F;
+    background-color:var(--m);
     border:none;
     letter-spacing: 0.025em;
     font-weight:300;
     line-height: 1.65;
 
     &:focus {
-        outline: #543631 2px solid;
+        outline: var(--text) 2px solid;
     }
 }
 .contact {
@@ -63,7 +63,7 @@ form textarea {
 .contact-captcha {
     height:100px;
     width: 300px;
-    border: 2px solid black;
+    border: 2px solid var(--text);
 }
 .contact-buttons {
     padding-top: 2em;
@@ -77,10 +77,10 @@ form textarea {
     cursor:pointer;
 }
 .contact-submit {
-    background-color:black;
-    color:#FED43F;
+    background-color:var(--text);
+    color:var(--bg);
 }
 .contact-clear {
     background-color:transparent;
-    border:2px black solid;
+    border:2px var(--text) solid;
 }

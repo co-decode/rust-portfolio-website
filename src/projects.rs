@@ -1,7 +1,8 @@
-use yew::{function_component, Html, html, Callback, MouseEvent, /* use_effect */};
+use yew::{function_component, Html, html,Event, Callback, MouseEvent, use_effect};
 use yew_router::prelude::*;
-// use gloo_events::EventListener;
-use web_sys::{/* window, */ HtmlMediaElement, Element, EventTarget};
+use gloo_events::EventListener;
+use web_sys::{window, HtmlMediaElement, Element, EventTarget};
+use js_sys::Object;
 use wasm_bindgen::JsCast;
 
 use crate::Route;
@@ -10,53 +11,35 @@ use crate::Route;
 pub fn projects() -> Html { 
     let navigator = use_navigator().unwrap();
 
+    use_effect({
+        move || {
+            let mut fullscreenchange_listener = None;
+            if let Some(element) = window().unwrap().document() {
+                let onfullscreenchange = Callback::from(move |_: Event| {
+                    if window().unwrap().document().unwrap().fullscreen_element().is_none() {
+                        let item = Object::from(window().unwrap().document().unwrap().get_elements_by_class_name("video"));
+                        let array = Object::values(&item);
+                        array.iter().for_each(move |el| {
+                            let el = HtmlMediaElement::from(el);
+                            el.clone().remove_attribute("controls").expect("Element successfully drops controls attribute");
+                            el.clone().pause().unwrap()
+                        });
+                    }
+                });
+                let listener = EventListener::new(
+                    &element,
+                    "fullscreenchange",
+                    move |e| onfullscreenchange.emit(e.clone())
+                );
+                fullscreenchange_listener = Some(listener);
+            }
+            move || drop(fullscreenchange_listener)
+        }
+    });
+
     let onclick:Callback<MouseEvent> = Callback::from(move |_| navigator.push(&Route::Videos));
 
-    // let document = window().unwrap().document().unwrap();
-
-        // let lifting_history = document.get_element_by_id("liftingRecord");
-        // lifting_history.unwrap().muted();
-    // let onmouseover = Callback::from(move |_| lifting_history.unwrap().dyn_into::<web_sys::HtmlMediaElement>().unwrap().play().unwrap());
-
-        // let projectLH = document.get_element_by_id("projects-1") .unwrap()
-        // .dyn_into::<web_sys::HtmlDivElement>()
-        // .unwrap();
-
-    // let on_mouseover = EventListener::new(&projectLH, "mouseover", move |_event| {
-    //     let _video = lifting_history
-    //     .unwrap()
-    //     .dyn_into::<web_sys::HtmlMediaElement>()
-    //     .unwrap();
-    
-    //     let promise=_video.play().unwrap();
-        
-    //     let _future = async{
-    //         let _result= wasm_bindgen_futures::JsFuture::from(promise).await;
-    //     };
-    // });
-   
-    // use_effect({
-
-    //     move || {
-    //         let mut hover_listener = None;
-
-    //         if let Some(element) = projectLH {
-    //             let onmouseover = Callback::from(move |_: MouseEvent| {
-    //                 lifting_history.unwrap().dyn_into::<web_sys::HtmlMediaElement>().unwrap().play()
-    //             });
-
-    //             let listener = EventListener::new(
-    //                 &element,
-    //                 "mouseover",
-    //                 move |e| onmouseover.emit(e.clone())
-    //             );
-    //             hover_listener = Some(listener);
-    //         }
-    //         move || drop(hover_listener)
-    //     }
-    // });
-
-    let on_mousein = {
+    let onmouseenter = {
         Callback::from(move |e: MouseEvent| {
             let target: Option<EventTarget> = e.target();
             let input = target.and_then(|t| t.dyn_into::<Element>().ok());
@@ -69,7 +52,7 @@ pub fn projects() -> Html {
             }
         })
     };
-    let on_mouseout = {
+    let onmouseleave = {
         Callback::from(move |e: MouseEvent| {
             let target: Option<EventTarget> = e.target();
             let input = target.and_then(|t| t.dyn_into::<Element>().ok());
@@ -77,31 +60,43 @@ pub fn projects() -> Html {
                 .get_with_index(0).expect("There should be a video element")
                 .dyn_into::<HtmlMediaElement>().ok();
             if let Some(video) = video {
-                // video.set_muted(true);
-                // let _result = wasm_bindgen_futures::JsFuture::from(
-                    video.pause().unwrap()
-                // );
+                video.pause().unwrap()
             }
         })
     };
-
+    let onclick_fs ={
+        Callback::from(move |e: MouseEvent| {
+            let target: Option<EventTarget> = e.target();
+            let input = target.and_then(|t| t.dyn_into::<Element>().ok());
+            let video = input.unwrap().parent_element()
+                .unwrap().parent_element()
+                .unwrap().parent_element()
+                .unwrap().get_elements_by_tag_name("video")
+                .get_with_index(0).expect("There should be a video element")
+                .dyn_into::<HtmlMediaElement>().ok();
+            if let Some(video) = video {
+                video.set_controls(true); 
+                video.request_fullscreen().expect("Video should go fullscreen")
+            }
+        })
+    };
 
     html! {
         <div class="projects-container" id="projects">
             <a id="projectsMarker"></a> 
             /* Project 1 */
-            <div class="projects-1" onmouseenter={on_mousein} onmouseleave={on_mouseout}>
+            <div class="weightlifting_log" onmouseenter={onmouseenter.clone()} onmouseleave={onmouseleave.clone()}>
                 <div class="project-inner">
-                <h3><a>{"Weightlifting Log"}</a></h3>
+                <h3><a onclick={onclick_fs.clone()}>{"Weightlifting Log"}</a></h3>
                 <div class="project-nav">
-                    <a href="https://co-decode.github.io/liftingHistory-Client/" target="_blank">{"Site"}</a>
+                    <a href="https://lifting-log.netlify.app/" target="_blank">{"Site"}</a>
                     <a href="https://github.com/co-decode/liftingHistory" target="_blank">{"Source"}</a>
                     <a onclick={onclick.clone()} href="#toLH">{"Video"}</a>
                 </div>
                 </div>
 
                 <div class="project-video">
-                <video id="liftingRecord" loop={true} muted={true}>
+                <video id="liftingRecord" poster="/assets/images/barbellgym.svg" loop={true} muted={true}>
                     <source src="/assets/video/liftingHistoryWebM.webm" type="video/webm"/>
                     <source src="/assets/video/liftingHistoryMP4.mp4" type="video/mp4"/>
                     <p>{"Your browser doesn't support HTML5 video."}</p>
@@ -157,12 +152,12 @@ pub fn projects() -> Html {
                 </div>
             </div>
                         /* Project 2 */
-            <div class="projects-2">
+            <div class="fitness_store" onmouseenter={onmouseenter.clone()} onmouseleave={onmouseleave.clone()}>
                 <div class="project-inner">
-                <h3><a>{"Fitness Store"}</a></h3>
+                <h3><a onclick={onclick_fs.clone()}>{"Fitness Store"}</a></h3>
                 <div class="project-nav">
-                    <a href="https://co-decode.github.io/liftingHistory-Client/" target="_blank">{"Site"}</a>
-                    <a href="https://github.com/co-decode/liftingHistory" target="_blank">{"Source"}</a>
+                    <a href="https://node-store-front.netlify.app/" target="_blank">{"Site"}</a>
+                    <a href="https://github.com/co-decode/storeFront" target="_blank">{"Source"}</a>
                     <a onclick={onclick.clone()} href="#toMSF">{"Video"}</a>
                 </div>
                 </div>
@@ -224,23 +219,23 @@ pub fn projects() -> Html {
                 </div>
             </div>
                         /* Project 3 */
-            <div class="projects-3">
+            <div class="sheet_music_generator" /* onmouseenter={onmouseenter.clone()} onmouseleave={onmouseleave.clone()} */>
                 <div class="project-inner">
-                <h3><a>{"Sheet Music Generator"}</a></h3>
+                <h3><a onclick={onclick_fs.clone()}>{"Sheet Music Generator"}</a></h3>
                 <div class="project-nav">
-                    <a href="https://co-decode.github.io/liftingHistory-Client/" target="_blank">{"Site"}</a>
+                    <a href="https://sheet-generator.netlify.app/" target="_blank">{"Site"}</a>
                     <a href="https://github.com/co-decode/liftingHistory" target="_blank">{"Source"}</a>
                     <a onclick={onclick.clone()} href="#toSG">{"Video"}</a>
                 </div>
                 </div>
 
-                <div class="project-video">
-                    <video id="sheetGen" loop={true}>
-                    <source src="/assets/video/sheetGeneratorWEBM.webm" type="video/webm"/>
-                    <source src="/assets/video/sheetGeneratorMP4.mp4" type="video/mp4"/>
-                    <p>{"Your browser doesn't support HTML5 video."}</p>
-                </video>
-                </div>
+                // <div class="project-video">
+                //     <video id="sheetGen" loop={true}>
+                //     <source src="/assets/video/sheetGeneratorWEBM.webm" type="video/webm"/>
+                //     <source src="/assets/video/sheetGeneratorMP4.mp4" type="video/mp4"/>
+                //     <p>{"Your browser doesn't support HTML5 video."}</p>
+                // </video>
+                // </div>
 
                 <div class="techTags">
                     <span class="project-svg">
@@ -261,23 +256,23 @@ pub fn projects() -> Html {
                 </div>
             </div>
                         /* Project 4 */
-            <div class="projects-4">
+            <div class="arithmetic_trainer" /* onmouseenter={onmouseenter.clone()} onmouseleave={onmouseleave.clone()} */>
                 <div class="project-inner">
-                <h3><a>{"Arithmetic Trainer"}</a></h3>
+                <h3><a onclick={onclick_fs.clone()}>{"Arithmetic Trainer"}</a></h3>
                 <div class="project-nav">
-                    <a href="https://co-decode.github.io/liftingHistory-Client/" target="_blank">{"Site"}</a>
-                    <a href="https://github.com/co-decode/liftingHistory" target="_blank">{"Source"}</a>
+                    <a href="https://co-decode.github.io/arithmeticProject/" target="_blank">{"Site"}</a>
+                    <a href="https://github.com/co-decode/arithmeticProject" target="_blank">{"Source"}</a>
                     <a href="#toA" onclick={onclick.clone()} >{"Video"}</a>
                 </div>
                 </div>
 
-                <div class="project-video">
-                <video id="arithmetic" loop={true}>
-                    <source src="/assets/video/ArhythmeticWebM.webm" type="video/webm"/>
-                    <source src="/assets/video/AryhthmeticMP42.mp4" type="video/mp4"/>
-                    <p>{"Your browser doesn't support HTML5 video."}</p>
-                </video>
-                </div>
+                // <div class="project-video">
+                // <video id="arithmetic" loop={true}>
+                //     <source src="/assets/video/ArhythmeticWebM.webm" type="video/webm"/>
+                //     <source src="/assets/video/AryhthmeticMP42.mp4" type="video/mp4"/>
+                //     <p>{"Your browser doesn't support HTML5 video."}</p>
+                // </video>
+                // </div>
 
                 <div class="techTags">
                     <span class="project-svg">
@@ -295,23 +290,24 @@ pub fn projects() -> Html {
                 </div>
             </div>
                         /* Project 5 */
-            <div class="projects-5">
+            <div class="lift_equivalence_calculator" 
+               /*  onmouseenter={onmouseenter.clone()} onmouseleave={onmouseleave.clone()} */>
                 <div class="project-inner">
-                <h3><a>{"Lift Equivalence Calculator"}</a></h3>
+                <h3><a onclick={onclick_fs.clone()}>{"Lift Equivalence Calculator"}</a></h3>
                 <div class="project-nav">
-                    <a href="https://co-decode.github.io/liftingHistory-Client/" target="_blank">{"Site"}</a>
-                    <a href="https://github.com/co-decode/liftingHistory" target="_blank">{"Source"}</a>
+                    <a href="https://equivalence-tabler.netlify.app/" target="_blank">{"Site"}</a>
+                    <a href="https://github.com/co-decode/tabler" target="_blank">{"Source"}</a>
                     <a onclick={onclick.clone()} href="#toLEC">{"Video"}</a>
                 </div>
                 </div>
 
-                <div class="project-video">
-                <video id="liftEquivalence" loop={true}>
-                    <source src="/assets/video/liftEquivalenceWebM.webm" type="video/webm"/>
-                    <source src="/assets/video/liftEquivalenceMP4.mp4" type="video/mp4"/>
-                    <p>{"Your browser doesn't support HTML5 video."}</p>
-                </video>
-                </div>
+                // <div class="project-video">
+                // <video id="liftEquivalence" loop={true}>
+                //     <source src="/assets/video/liftEquivalenceWebM.webm" type="video/webm"/>
+                //     <source src="/assets/video/liftEquivalenceMP4.mp4" type="video/mp4"/>
+                //     <p>{"Your browser doesn't support HTML5 video."}</p>
+                // </video>
+                // </div>
 
                 <div class="techTags">
 						<span class="project-svg">
@@ -335,12 +331,12 @@ pub fn projects() -> Html {
 					</div>
             </div>
                         /* Project 6 */
-            <div class="projects-6">
+            <div class="portfolio_in_rust">
                 <div class="project-inner">
                 <h3><a>{"Portfolio in Rust"}</a></h3>
                 <div class="project-nav">
                     // <a href="https://co-decode.github.io/liftingHistory-Client/" target="_blank">{"Site"}</a>
-                    <a href="https://github.com/co-decode/liftingHistory" target="_blank">{"Source"}</a>
+                    <a href="https://github.com/co-decode/rust-portfolio-website" target="_blank">{"Source"}</a>
                     // <a onclick={onclick.clone()} href="#toLH">{"Video"}</a>
                 </div>
                 </div>
