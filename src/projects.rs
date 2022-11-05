@@ -91,14 +91,14 @@ pub fn projects() -> Html {
                 <div class="project-nav">
                     <a href="https://lifting-log.netlify.app/" target="_blank">{"Site"}</a>
                     <a href="https://github.com/co-decode/liftingHistory" target="_blank">{"Source"}</a>
-                    <a onclick={onclick.clone()} href="#toLH">{"Video"}</a>
+                    <a onclick={onclick.clone()} href="#toLL">{"Video"}</a>
                 </div>
                 </div>
 
                 <div class="project-video">
                 <video id="liftingRecord" poster="/assets/images/barbellgym.svg" loop={true} muted={true}>
-                    <source src="/assets/video/liftingHistoryWebM.webm" type="video/webm"/>
-                    <source src="/assets/video/liftingHistoryMP4.mp4" type="video/mp4"/>
+                    <source src="/assets/video/liftingLogWebM.webm" type="video/webm"/>
+                    <source src="/assets/video/liftingLogMP4.mp4" type="video/mp4"/>
                     <p>{"Your browser doesn't support HTML5 video."}</p>
                 </video>
                 </div>
@@ -151,7 +151,9 @@ pub fn projects() -> Html {
                     </span>
                 </div>
             </div>
-                        /* Project 2 */
+
+            /* Project 2 */
+            
             <div class="fitness_store" onmouseenter={onmouseenter.clone()} onmouseleave={onmouseleave.clone()}>
                 <div class="project-inner">
                 <h3><a onclick={onclick_fs.clone()}>{"Fitness Store"}</a></h3>
@@ -218,7 +220,35 @@ pub fn projects() -> Html {
                     </span>
                 </div>
             </div>
-                        /* Project 3 */
+
+            /* Project 3 */
+
+            <div class="portfolio_in_rust">
+                <div class="project-inner">
+                <h3><a>{"Portfolio in Rust"}</a></h3>
+                <div class="project-nav">
+                    <a href="https://github.com/co-decode/rust-portfolio-website" target="_blank">{"Source"}</a>
+                </div>
+                </div>
+
+                <div class="techTags">
+                    <span class="project-svg">
+                        <img src="/assets/images/rust.svg" alt="" />
+                    </span>
+                    <span class="project-svg">
+                        <img src="/assets/images/yew.svg" alt="" />
+                    </span>
+                    <span class="project-svg">
+                        <img src="/assets/images/sass.svg" alt="" />
+                    </span>
+                    <span class="project-svg">
+                        <img src="/assets/images/webassembly.svg" alt="" />
+                    </span>
+                </div>
+            </div>
+            
+            /* Project 4 */
+
             <div class="sheet_music_generator" /* onmouseenter={onmouseenter.clone()} onmouseleave={onmouseleave.clone()} */>
                 <div class="project-inner">
                 <h3><a onclick={onclick_fs.clone()}>{"Sheet Music Generator"}</a></h3>
@@ -255,7 +285,9 @@ pub fn projects() -> Html {
                     </span>
                 </div>
             </div>
-                        /* Project 4 */
+
+            /* Project 5 */
+
             <div class="arithmetic_trainer" /* onmouseenter={onmouseenter.clone()} onmouseleave={onmouseleave.clone()} */>
                 <div class="project-inner">
                 <h3><a onclick={onclick_fs.clone()}>{"Arithmetic Trainer"}</a></h3>
@@ -289,7 +321,9 @@ pub fn projects() -> Html {
                     </span>
                 </div>
             </div>
-                        /* Project 5 */
+
+            /* Project 6 */
+    
             <div class="lift_equivalence_calculator" 
                /*  onmouseenter={onmouseenter.clone()} onmouseleave={onmouseleave.clone()} */>
                 <div class="project-inner">
@@ -310,52 +344,27 @@ pub fn projects() -> Html {
                 // </div>
 
                 <div class="techTags">
-						<span class="project-svg">
-							<img src="/assets/images/javascript.svg" alt="" />
-						</span>
-						<span class="project-svg">
-							<img src="/assets/images/react.svg" alt="" />
-						</span>
-						<span class="project-svg">
-							<img src="/assets/images/css3.svg" alt="" />
-						</span>
-						<span class="project-svg">
-							<img src="/assets/images/html5.svg" alt="" />
-						</span>
-						<span class="project-svg">
-							<img src="/assets/images/netlify.svg" alt="" />
-						</span>
-						<span class="project-svg">
-							<img src="/assets/images/github.svg" alt="" />
-						</span>
-					</div>
-            </div>
-                        /* Project 6 */
-            <div class="portfolio_in_rust">
-                <div class="project-inner">
-                <h3><a>{"Portfolio in Rust"}</a></h3>
-                <div class="project-nav">
-                    // <a href="https://co-decode.github.io/liftingHistory-Client/" target="_blank">{"Site"}</a>
-                    <a href="https://github.com/co-decode/rust-portfolio-website" target="_blank">{"Source"}</a>
-                    // <a onclick={onclick.clone()} href="#toLH">{"Video"}</a>
-                </div>
-                </div>
-
-                <div class="techTags">
                     <span class="project-svg">
-                        <img src="/assets/images/rust.svg" alt="" />
+                        <img src="/assets/images/javascript.svg" alt="" />
                     </span>
                     <span class="project-svg">
-                        <img src="/assets/images/yew.svg" alt="" />
+                        <img src="/assets/images/react.svg" alt="" />
                     </span>
                     <span class="project-svg">
-                        <img src="/assets/images/sass.svg" alt="" />
+                        <img src="/assets/images/css3.svg" alt="" />
                     </span>
                     <span class="project-svg">
-                        <img src="/assets/images/webassembly.svg" alt="" />
+                        <img src="/assets/images/html5.svg" alt="" />
+                    </span>
+                    <span class="project-svg">
+                        <img src="/assets/images/netlify.svg" alt="" />
+                    </span>
+                    <span class="project-svg">
+                        <img src="/assets/images/github.svg" alt="" />
                     </span>
                 </div>
             </div>
+            
         </div>
     }
 }

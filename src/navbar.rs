@@ -1,5 +1,5 @@
 use yew::{function_component, Html, html, Properties};
-use yew::functional::{use_effect_with_deps};
+use yew::functional::use_effect_with_deps;
 use web_sys::{ /* console ,*/ window, /* Element, */ /* DomTokenList */};
 
 #[derive(Properties, PartialEq)]
@@ -27,9 +27,6 @@ pub fn return_navbar(props: &Props) -> Html {
         },
         scr_y,
     );
-
-    // let wind = window().unwrap();
-    // console::log_1(&format!("{:?}", props.scr_y.clone()).into());
 
     html! { 
         <div id="navbar" class="navbar anchor">

@@ -22,6 +22,7 @@ pub fn banner() -> Html {
             <div class="banner-skills-container">
                 <h4>{"My Skills"}</h4>
             // <div class="banner-skills-container-inner">
+            <div class="banner-top-container">
                 <div class="banner-skills-top">
                     <span class="banner-svg">
                     <img src="/assets/images/javascript.svg" alt="" />
@@ -105,6 +106,7 @@ pub fn banner() -> Html {
                         <p>{"Git"}</p>
                     </span>
                 </div>
+            </div>
                 <div class="banner-skills-bottom">
                     <span class="banner-svg">
                     <img src="/assets/images/nodejs.svg" alt="" />

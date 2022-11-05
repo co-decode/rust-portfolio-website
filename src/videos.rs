@@ -43,10 +43,10 @@ pub fn videos() -> Html {
             <div class="videos-title">
                 <h1>{"Project Video Clips"}</h1>
             </div>
-            <label id="toLH">{"LIFTING HISTORY"}</label>
+            <label id="toLL">{"LIFTING LOG"}</label>
             <video class="videos-video" controls={true}>
-                <source src="/assets/video/liftingHistoryWebM.webm" type="video/webm"/>
-                <source src="/assets/video/liftingHistoryMP4.mp4" type="video/mp4"/>
+                <source src="/assets/video/liftingLogWebM.webm" type="video/webm"/>
+                <source src="/assets/video/liftingLogMP4.mp4" type="video/mp4"/>
                 <p>{"You browser doesn't support HTML5 video."}</p>
             </video>
             <label id="toMSF">{"MY STORE FRONT"}</label>
