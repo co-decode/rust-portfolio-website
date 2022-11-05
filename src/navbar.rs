@@ -39,13 +39,13 @@ pub fn return_navbar(props: &Props) -> Html {
             </div>
             </a>
             <div class="navbar-tail">
-                <a class="navbar-resume word" href="/assets/Cody Ross - Resume - 031022.pdf" target="_blank">{"RESUME"}</a>
+                <a class="navbar-resume word" href="/assets/Cody Ross - Resume.pdf" target="_blank">{"RESUME"}</a>
                 <a class="navbar-github word" href="https://github.com/co-decode" target="_blank">
                 {"GITHUB"}</a>
                 <a class="navbar-contact word" href="#contact">
                 {"CONTACT"}</a>
                 /* SVG for < 420px */
-                <a class="navbar-resume img" href="/assets/Cody Ross - Resume - 031022.pdf" target="_blank">
+                <a class="navbar-resume img" href="/assets/Cody Ross - Resume.pdf" target="_blank">
 					<img src="/assets/images/resume.svg" />
 				</a>
                 <a class="navbar-github img" href="https://github.com/co-decode" target="_blank">

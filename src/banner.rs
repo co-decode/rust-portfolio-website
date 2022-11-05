@@ -12,7 +12,7 @@ pub fn banner() -> Html {
 
             <div class="banner-actions">
                 <div class="banner-resume">
-                    <a href="/assets/Cody Ross - Resume - 031022.pdf" target="_blank">
+                    <a href="/assets/Cody Ross - Resume.pdf" target="_blank">
                     {"MY RESUME"}</a></div>
                 <div class="banner-projects">
                     <a href="#projectsMarker">
