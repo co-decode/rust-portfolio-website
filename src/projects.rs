@@ -254,7 +254,7 @@ pub fn projects() -> Html {
                 <h3><a onclick={onclick_fs.clone()}>{"Sheet Music Generator"}</a></h3>
                 <div class="project-nav">
                     <a href="https://sheet-generator.netlify.app/" target="_blank">{"Site"}</a>
-                    <a href="https://github.com/co-decode/liftingHistory" target="_blank">{"Source"}</a>
+                    <a href="https://github.com/co-decode/sheetGenerator" target="_blank">{"Source"}</a>
                     <a onclick={onclick.clone()} href="#toSG">{"Video"}</a>
                 </div>
                 </div>
