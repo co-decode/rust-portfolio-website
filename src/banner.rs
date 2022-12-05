@@ -37,6 +37,10 @@ pub fn banner() -> Html {
                         <p>{"React"}</p>
                     </span>
                     <span class="banner-svg">
+                        <img src="/assets/images/nextjs.svg" alt="" />
+                        <p>{"Next"}</p>
+                    </span>
+                    <span class="banner-svg">
                         <img src="/assets/images/html5.svg" alt="" />
                         <p>{"HTML5"}</p>
                     </span>
@@ -59,6 +63,10 @@ pub fn banner() -> Html {
                     <span class="banner-svg">
                         <img src="/assets/images/mswjs.svg" alt="" />
                         <p>{"MockSW"}</p>
+                    </span>
+                    <span class="banner-svg">
+                        <img src="/assets/images/cypress.svg" alt="" />
+                        <p>{"Cypress"}</p>
                     </span>
                     <span class="banner-svg">
                         <img src="/assets/images/git.svg" alt="" />
@@ -78,6 +86,10 @@ pub fn banner() -> Html {
                         <p>{"React"}</p>
                     </span>
                     <span class="banner-svg duplicate">
+                        <img src="/assets/images/nextjs.svg" alt="" />
+                        <p>{"Next"}</p>
+                    </span>
+                    <span class="banner-svg duplicate">
                         <img src="/assets/images/html5.svg" alt="" />
                         <p>{"HTML5"}</p>
                     </span>
@@ -100,6 +112,10 @@ pub fn banner() -> Html {
                     <span class="banner-svg duplicate">
                         <img src="/assets/images/mswjs.svg" alt="" />
                         <p>{"MockSW"}</p>
+                    </span>
+                    <span class="banner-svg duplicate">
+                        <img src="/assets/images/cypress.svg" alt="" />
+                        <p>{"Cypress"}</p>
                     </span>
                     <span class="banner-svg duplicate">
                         <img src="/assets/images/git.svg" alt="" />
@@ -129,12 +145,12 @@ pub fn banner() -> Html {
                         <p>{"GraphQL"}</p>
                     </span>
                     <span class="banner-svg">
-                        <img src="/assets/images/bcrypt.svg" alt="" />
-                        <p>{"Bcrypt"}</p>
+                        <img src="/assets/images/socketio.svg" alt="" />
+                        <p>{"Socket.io"}</p>
                     </span>
                     <span class="banner-svg">
-                        <img src="/assets/images/passportjs.svg" alt="" />
-                        <p>{"Passport"}</p>
+                        <img src="/assets/images/bcrypt.svg" alt="" />
+                        <p>{"Bcrypt"}</p>
                     </span>
                     <span class="banner-svg">
                         <img src="/assets/images/docker.svg" alt="" />
@@ -174,12 +190,12 @@ pub fn banner() -> Html {
                         <p>{"GraphQL"}</p>
                     </span>
                     <span class="banner-svg duplicate">
-                        <img src="/assets/images/bcrypt.svg" alt="" />
-                        <p>{"Bcrypt"}</p>
+                        <img src="/assets/images/socketio.svg" alt="" />
+                        <p>{"Socket.io"}</p>
                     </span>
                     <span class="banner-svg duplicate">
-                        <img src="/assets/images/passportjs.svg" alt="" />
-                        <p>{"Passport"}</p>
+                        <img src="/assets/images/bcrypt.svg" alt="" />
+                        <p>{"Bcrypt"}</p>
                     </span>
                     <span class="banner-svg duplicate">
                         <img src="/assets/images/docker.svg" alt="" />

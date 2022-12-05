@@ -223,6 +223,39 @@ pub fn projects() -> Html {
 
             /* Project 3 */
 
+            <div class="connect_four">
+                <div class="project-inner">
+                <h3><a>{"Connect Four"}</a></h3>
+                <div class="project-nav">
+                    <a href="https://connectfour-production.up.railway.app/" target="_blank">{"Site"}</a>
+                    <a href="https://github.com/co-decode/connectFour" target="_blank">{"Source"}</a>
+                </div>
+                </div>
+
+                <div class="techTags">
+                    <span class="project-svg">
+                        <img src="/assets/images/react.svg" alt="" />
+                    </span>
+                    <span class="project-svg">
+                        <img src="/assets/images/nextjs.svg" alt="" />
+                    </span>
+                    <span class="project-svg">
+                        <img src="/assets/images/socketio.svg" alt="" />
+                    </span>
+                    <span class="project-svg">
+                        <img src="/assets/images/cypress.svg" alt="" />
+                    </span>
+                    <span class="project-svg">
+                        <img src="/assets/images/css3.svg" alt="" />
+                    </span>
+                    <span class="project-svg">
+                        <img src="/assets/images/github.svg" alt="" />
+                    </span>
+                </div>
+            </div>
+
+            /* Project 4 */
+
             <div class="portfolio_in_rust">
                 <div class="project-inner">
                 <h3><a>{"Portfolio in Rust"}</a></h3>
@@ -247,11 +280,11 @@ pub fn projects() -> Html {
                 </div>
             </div>
             
-            /* Project 4 */
+            /* Project 5 */
 
             <div class="sheet_music_generator" /* onmouseenter={onmouseenter.clone()} onmouseleave={onmouseleave.clone()} */>
                 <div class="project-inner">
-                <h3><a onclick={onclick_fs.clone()}>{"Sheet Music Generator"}</a></h3>
+                <h3><a>{"Sheet Music Generator"}</a></h3>
                 <div class="project-nav">
                     <a href="https://sheet-generator.netlify.app/" target="_blank">{"Site"}</a>
                     <a href="https://github.com/co-decode/sheetGenerator" target="_blank">{"Source"}</a>
@@ -286,11 +319,11 @@ pub fn projects() -> Html {
                 </div>
             </div>
 
-            /* Project 5 */
+            /* Project 6 */
 
             <div class="arithmetic_trainer" /* onmouseenter={onmouseenter.clone()} onmouseleave={onmouseleave.clone()} */>
                 <div class="project-inner">
-                <h3><a onclick={onclick_fs.clone()}>{"Arithmetic Trainer"}</a></h3>
+                <h3><a>{"Arithmetic Trainer"}</a></h3>
                 <div class="project-nav">
                     <a href="https://co-decode.github.io/arithmeticProject/" target="_blank">{"Site"}</a>
                     <a href="https://github.com/co-decode/arithmeticProject" target="_blank">{"Source"}</a>
@@ -322,12 +355,12 @@ pub fn projects() -> Html {
                 </div>
             </div>
 
-            /* Project 6 */
+            /* Project 7 */
     
             <div class="lift_equivalence_calculator" 
                /*  onmouseenter={onmouseenter.clone()} onmouseleave={onmouseleave.clone()} */>
                 <div class="project-inner">
-                <h3><a onclick={onclick_fs.clone()}>{"Lift Equivalence Calculator"}</a></h3>
+                <h3><a>{"Lift Equivalence Calculator"}</a></h3>
                 <div class="project-nav">
                     <a href="https://equivalence-tabler.netlify.app/" target="_blank">{"Site"}</a>
                     <a href="https://github.com/co-decode/tabler" target="_blank">{"Source"}</a>

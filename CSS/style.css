@@ -551,6 +551,15 @@ form textarea {
   }
 }
 
+.connect_four {
+  background-image: url("/assets/images/connectFour.png");
+  background-size: 100% 100%;
+}
+.connect_four:hover {
+  background-image: url("/assets/images/connectFour-2.png");
+  background-size: 100% 100%;
+}
+
 .portfolio_in_rust {
   background-image: url("/assets/images/rustacean.png");
   background-size: 100% 100%;
@@ -767,3 +776,5 @@ small:     (481px,    736px    ),
 xsmall:    (361px,    480px    ),
 xxsmall:   (null,     360px    )
 */
+
+/*# sourceMappingURL=style.css.map */
