@@ -234,6 +234,9 @@ pub fn projects() -> Html {
 
                 <div class="techTags">
                     <span class="project-svg">
+                        <img src="/assets/images/typescript.svg" alt="" />
+                    </span>
+                    <span class="project-svg">
                         <img src="/assets/images/react.svg" alt="" />
                     </span>
                     <span class="project-svg">
