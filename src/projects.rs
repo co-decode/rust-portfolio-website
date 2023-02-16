@@ -223,13 +223,22 @@ pub fn projects() -> Html {
 
             /* Project 3 */
 
-            <div class="connect_four">
+            <div class="connect_four" onmouseenter={onmouseenter.clone()} onmouseleave={onmouseleave.clone()}>
                 <div class="project-inner">
                 <h3><a>{"Connect Four"}</a></h3>
                 <div class="project-nav">
                     <a href="https://connectfour-production.up.railway.app/" target="_blank">{"Site"}</a>
                     <a href="https://github.com/co-decode/connectFour" target="_blank">{"Source"}</a>
+                    <a onclick={onclick.clone()} href="#toCF">{"Video"}</a>
                 </div>
+                </div>
+
+                <div class="project-video">
+                    <video id="connectFour" class="connectFour" loop={true}>
+                        <source src="/assets/video/connectFourWebM.webm" type="video/webm"/>
+                        <source src="/assets/video/connectFourMP4.mp4" type="video/mp4"/>
+                        <p>{"Your browser doesn't support HTML5 video."}</p>
+                    </video>
                 </div>
 
                 <div class="techTags">
@@ -257,9 +266,9 @@ pub fn projects() -> Html {
                 </div>
             </div>
 
-            /* Project 4 */
+            /* Project - */
 
-            <div class="portfolio_in_rust">
+            /* <div class="portfolio_in_rust">
                 <div class="project-inner">
                 <h3><a>{"Portfolio in Rust"}</a></h3>
                 <div class="project-nav">
@@ -281,11 +290,11 @@ pub fn projects() -> Html {
                         <img src="/assets/images/webassembly.svg" alt="" />
                     </span>
                 </div>
-            </div>
+            </div> */
             
-            /* Project 5 */
+            /* Project 4 */
 
-            <div class="sheet_music_generator" /* onmouseenter={onmouseenter.clone()} onmouseleave={onmouseleave.clone()} */>
+            <div class="sheet_music_generator" onmouseenter={onmouseenter.clone()} onmouseleave={onmouseleave.clone()}>
                 <div class="project-inner">
                 <h3><a>{"Sheet Music Generator"}</a></h3>
                 <div class="project-nav">
@@ -295,13 +304,13 @@ pub fn projects() -> Html {
                 </div>
                 </div>
 
-                // <div class="project-video">
-                //     <video id="sheetGen" loop={true}>
-                //     <source src="/assets/video/sheetGeneratorWEBM.webm" type="video/webm"/>
-                //     <source src="/assets/video/sheetGeneratorMP4.mp4" type="video/mp4"/>
-                //     <p>{"Your browser doesn't support HTML5 video."}</p>
-                // </video>
-                // </div>
+                <div class="project-video">
+                    <video id="sheetGen" loop={true}>
+                    <source src="/assets/video/sheetGeneratorWEBM.webm" type="video/webm"/>
+                    <source src="/assets/video/sheetGeneratorMP4.mp4" type="video/mp4"/>
+                    <p>{"Your browser doesn't support HTML5 video."}</p>
+                    </video>
+                </div>
 
                 <div class="techTags">
                     <span class="project-svg">
@@ -322,7 +331,7 @@ pub fn projects() -> Html {
                 </div>
             </div>
 
-            /* Project 6 */
+            /* Project 5 */
 
             <div class="arithmetic_trainer" /* onmouseenter={onmouseenter.clone()} onmouseleave={onmouseleave.clone()} */>
                 <div class="project-inner">
@@ -358,7 +367,7 @@ pub fn projects() -> Html {
                 </div>
             </div>
 
-            /* Project 7 */
+            /* Project 6 */
     
             <div class="lift_equivalence_calculator" 
                /*  onmouseenter={onmouseenter.clone()} onmouseleave={onmouseleave.clone()} */>

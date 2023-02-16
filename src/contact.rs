@@ -26,6 +26,27 @@ pub fn contact() -> Html {
             </div>
         </form>
         </div>
+
+        <footer class="contact-footer">
+        <a href="https://github.com/co-decode/rust-portfolio-website">
+        {"Built with:"}
+        </a>
+        <div class="contact-techTags">
+            <span class="project-svg">
+                <img src="/assets/images/rust.svg" alt="" />
+            </span>
+            <span class="project-svg">
+                <img src="/assets/images/yew.svg" alt="" />
+            </span>
+            <span class="project-svg">
+                <img src="/assets/images/sass.svg" alt="" />
+            </span>
+            <span class="project-svg">
+                <img src="/assets/images/webassembly.svg" alt="" />
+            </span>
+        </div>
+        </footer>
+        
         </div>
     }
 }

@@ -55,6 +55,12 @@ pub fn videos() -> Html {
                 <source src="/assets/video/storeFrontMute.mp4" type="video/mp4"/>
                 <p>{"You browser doesn't support HTML5 video."}</p>
             </video>
+            <label id="toCF">{"CONNECT FOUR"}</label>
+            <video class="videos-video" controls={true}>
+                <source src="/assets/vidoe/connectFourWebM.webm" type="video/webm"/>
+                <source src="/assets/video/connectFourMP4.mp4" type="video/mp4"/>
+                <p>{"You browser doesn't support HTML5 video."}</p>
+            </video>
             <label id="toSG">{"SHEET MUSIC GENERATOR"}</label>
             <video class="videos-video" controls={true}>
                 <source src="/assets/video/sheetGeneratorWEBM.webm" type="video/webm"/>

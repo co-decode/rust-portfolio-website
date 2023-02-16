@@ -139,14 +139,14 @@
     }
 }
 
-.connect_four {
-    background-image: url("/assets/images/connectFour.png");
-    background-size:100% 100%;
-    &:hover {
-        background-image: url("/assets/images/connectFour-2.png");
-        background-size:100% 100%;
-    }
-}
+// .connect_four {
+//     background-image: url("/assets/images/connectFour.png");
+//     background-size:100% 100%;
+//     &:hover {
+//         background-image: url("/assets/images/connectFour-2.png");
+//         background-size:100% 100%;
+//     }
+// }
 
 .portfolio_in_rust {
     background-image: url("/assets/images/rustacean.png");
@@ -171,15 +171,15 @@
         background-size:100% 100%;
     }
 }
-.sheet_music_generator {
+// .sheet_music_generator {
     
-    background-image: url("/assets/images/sheetGen50-min.png");
-    background-size:100% 100%;
-    &:hover {
-        background-image: url("/assets/images/sheetGenMenu50-min.png");
-        background-size:100% 100%;
-    }
-}
+//     background-image: url("/assets/images/sheetGen50-min.png");
+//     background-size:100% 100%;
+//     &:hover {
+//         background-image: url("/assets/images/sheetGenMenu50-min.png");
+//         background-size:100% 100%;
+//     }
+// }
 .fitness_store, .weightlifting_log{
     a:hover {
         cursor:pointer;

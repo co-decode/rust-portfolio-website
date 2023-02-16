@@ -10,6 +10,7 @@ form input, form textarea {
     }
 }
 .contact {
+    position:relative;
     width: 100%;
     height: calc(100vh - 3.25em);
     display: flex;
@@ -83,4 +84,51 @@ form textarea {
 .contact-clear {
     background-color:transparent;
     border:2px var(--text) solid;
+}
+
+.contact-footer {
+    font-family:monospace;
+    position: absolute;
+    bottom:1em;
+    width: 100vw;
+    display:flex;
+    justify-content: center;
+    align-items: center;
+    gap:10px;
+    font-size:small;
+
+    & > a:hover {
+        color:var(--hl)
+    }
+}
+/* .contact-techTags {
+	position:absolute;
+	top:10px;
+    left:0;
+    box-sizing: border-box;
+	padding-left:10px;
+	display:flex;
+	gap: 10px;
+	width:100%;
+	flex-wrap:wrap;
+	z-index:100;
+
+    @media (width < 570px) {
+        padding-left: 5px;
+    }
+} */
+.contact-techTags{
+    display:flex;
+    gap:5px;
+
+    & > span > img {
+        width:16px;
+        height:16px;
+        // filter:brightness(0) saturate(100%);
+
+        @media (width < 361px) {
+            width: 16px;
+            height:16px;
+        }
+    }
 }
