@@ -84,6 +84,30 @@ pub fn projects() -> Html {
     html! {
         <div class="projects-container" id="projects">
             <a id="projectsMarker"></a> 
+            <header>
+                <p>{"\u{1F980} This website was built with:"}</p>
+                <div class="techTags">
+                    <span class="project-svg">
+                        <img src="/assets/images/rust.svg" alt="" />
+                    </span>
+                    <span class="project-svg">
+                        <img src="/assets/images/yew.svg" alt="" />
+                    </span>
+                    <span class="project-svg">
+                        <img src="/assets/images/sass.svg" alt="" />
+                    </span>
+                    <span class="project-svg">
+                        <img src="/assets/images/webassembly.svg" alt="" />
+                    </span>
+                    <span class="project-svg">
+                        <img src="/assets/images/nginx.svg" alt="" />
+                    </span>
+                    <span class="project-svg">
+                        <img src="/assets/images/vultr.svg" alt="" />
+                    </span>
+                </div>
+                <a href="https://github.com/co-decode/rust-portfolio-website" target="_blank">{"Source"}</a>
+            </header>
             /* Project 1 */
             <div class="weightlifting_log" onmouseenter={onmouseenter.clone()} onmouseleave={onmouseleave.clone()}>
                 <div class="project-inner">
@@ -103,7 +127,7 @@ pub fn projects() -> Html {
                 </video>
                 </div>
 
-                <div class="techTags">
+                <div class="techTags absolute">
                     <span class="project-svg">
                         <img src="/assets/images/javascript.svg" alt="" />
                     </span>
@@ -172,7 +196,7 @@ pub fn projects() -> Html {
                     </video>
                 </div>
 
-                <div class="techTags">
+                <div class="techTags absolute">
                     <span class="project-svg">
                         <img src="/assets/images/typescript.svg" alt="" />
                     </span>
@@ -241,7 +265,7 @@ pub fn projects() -> Html {
                     </video>
                 </div>
 
-                <div class="techTags">
+                <div class="techTags absolute">
                     <span class="project-svg">
                         <img src="/assets/images/typescript.svg" alt="" />
                     </span>
@@ -276,7 +300,7 @@ pub fn projects() -> Html {
                 </div>
                 </div>
 
-                <div class="techTags">
+                <div class="techTags absolute">
                     <span class="project-svg">
                         <img src="/assets/images/rust.svg" alt="" />
                     </span>
@@ -312,7 +336,7 @@ pub fn projects() -> Html {
                     </video>
                 </div>
 
-                <div class="techTags">
+                <div class="techTags absolute">
                     <span class="project-svg">
                         <img src="/assets/images/javascript.svg" alt="" />
                     </span>
@@ -351,7 +375,7 @@ pub fn projects() -> Html {
                 // </video>
                 // </div>
 
-                <div class="techTags">
+                <div class="techTags absolute">
                     <span class="project-svg">
                         <img src="/assets/images/javascript.svg" alt="" />
                     </span>
@@ -388,7 +412,7 @@ pub fn projects() -> Html {
                 // </video>
                 // </div>
 
-                <div class="techTags">
+                <div class="techTags absolute">
                     <span class="project-svg">
                         <img src="/assets/images/javascript.svg" alt="" />
                     </span>
