@@ -417,52 +417,38 @@ form textarea {
   border: 2px var(--text) solid;
 }
 
+/* 
 .contact-footer {
-  font-family: monospace;
-  position: absolute;
-  bottom: 1em;
-  width: 100%;
-  display: flex;
-  justify-content: center;
-  align-items: center;
-  gap: 10px;
-  font-size: small;
-}
-.contact-footer > a:hover {
-  color: var(--hl);
-}
+    font-family:monospace;
+    position: absolute;
+    bottom:1em;
+    width: 100%;
+    display:flex;
+    justify-content: center;
+    align-items: center;
+    gap:10px;
+    font-size:small;
 
-/* .contact-techTags {
-	position:absolute;
-	top:10px;
-    left:0;
-    box-sizing: border-box;
-	padding-left:10px;
-	display:flex;
-	gap: 10px;
-	width:100%;
-	flex-wrap:wrap;
-	z-index:100;
-
-    @media (width < 570px) {
-        padding-left: 5px;
+    & > a:hover {
+        color:var(--hl)
     }
-} */
-.contact-techTags {
-  display: flex;
-  gap: 5px;
 }
-.contact-techTags > span > img {
-  width: 16px;
-  height: 16px;
-}
-@media (width < 361px) {
-  .contact-techTags > span > img {
-    width: 16px;
-    height: 16px;
-  }
-}
+.contact-techTags{
+    display:flex;
+    gap:5px;
 
+    & > span > img {
+        width:16px;
+        height:16px;
+        // filter:brightness(0) saturate(100%);
+
+        @media (width < 361px) {
+            width: 16px;
+            height:16px;
+        }
+    }
+}
+*/
 /* PROJECTS */
 .projects-container {
   display: flex;
@@ -475,10 +461,12 @@ form textarea {
   width: 100%;
   position: relative;
   display: flex;
+  flex-wrap: wrap;
   justify-content: center;
   align-items: center;
-  gap: 10px;
+  column-gap: 10px;
   font-family: monospace;
+  white-space: nowrap;
 }
 .projects-container > header a {
   position: relative;
@@ -504,6 +492,11 @@ form textarea {
 }
 .projects-container > header:hover::before {
   opacity: 0;
+}
+@media (width < 280px) {
+  .projects-container > header p {
+    font-size: small;
+  }
 }
 
 .projects-container > div {
@@ -610,7 +603,6 @@ form textarea {
   box-sizing: border-box;
   display: flex;
   gap: 10px;
-  flex-wrap: wrap;
 }
 @media (width < 570px) {
   .techTags {
@@ -620,6 +612,7 @@ form textarea {
 
 .techTags.absolute {
   position: absolute;
+  flex-wrap: wrap;
   padding-left: 10px;
   top: 10px;
   left: 0;

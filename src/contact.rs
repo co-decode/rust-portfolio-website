@@ -27,6 +27,7 @@ pub fn contact() -> Html {
         </form>
         </div>
 
+        /* 
         <footer class="contact-footer">
         <a href="https://github.com/co-decode/rust-portfolio-website">
         {"Built with:"}
@@ -45,7 +46,8 @@ pub fn contact() -> Html {
                 <img src="/assets/images/webassembly.svg" alt="" />
             </span>
         </div>
-        </footer>
+        </footer> 
+        */
         
         </div>
     }
