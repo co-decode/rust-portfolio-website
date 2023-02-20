@@ -121,7 +121,7 @@ pub fn projects() -> Html {
 
                 <div class="project-video">
                 <video id="liftingRecord" poster="/assets/images/barbellgym.svg" loop={true} muted={true}>
-                    <source src="/assets/video/liftingLogWebM.webm" type="video/webm"/>
+                    <source src="/assets/video/liftingLogWEBM.webm" type="video/webm"/>
                     <source src="/assets/video/liftingLogMP4.mp4" type="video/mp4"/>
                     <p>{"Your browser doesn't support HTML5 video."}</p>
                 </video>
