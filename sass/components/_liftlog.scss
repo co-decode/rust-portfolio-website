@@ -1,0 +1,73 @@
+.liftlog-main {
+  #v1 {
+    margin-top: 4rem;
+  }
+
+}
+.liftlog-tabs {
+  display: flex;
+  margin-block:1rem;
+  justify-content: space-evenly;
+}
+.liftlog-label {
+  display: flex;
+  align-items: center;
+  gap: 2rem;
+  flex-wrap:wrap;
+
+  &.ll-mt {
+    margin-top: 4rem;
+  }
+}
+.liftlog-description {
+  margin-bottom: 2rem;
+  font-weight:400;
+  letter-spacing: 0.1rem;
+  font-size:16px;
+}
+.liftlog-grid {
+  display: grid;
+  place-items:center;
+
+  @media (min-width: 1000px) {
+    grid-template-columns: 1fr 1fr;
+    row-gap: 5rem;
+  }
+  @media (min-width: 1300px) {
+    grid-template-columns: 1fr 1fr 1fr;
+  }
+}
+.liftlog-cont {
+  position:relative;
+  transform: scale(0.8);
+
+  p {
+    text-align: center;
+    margin-top:1rem;
+  }
+
+  @media (min-width:1000px) {
+    transform: scale(1);
+
+  }
+}
+.liftlog-exp {
+  position:relative;
+  background: transparent;
+  border-radius: 45px;
+  width: 312px;
+  height: 660px;
+  overflow: hidden;
+}
+.liftlog-frame {
+  position:relative;
+  top:-17px;
+  left:-20px;
+  pointer-events:none;
+}
+.liftlog-video {
+  position:absolute;
+  left:2px;
+}
+
+

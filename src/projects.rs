@@ -1,51 +1,70 @@
-use yew::{function_component, Html, html,Event, Callback, MouseEvent, use_effect};
-use yew_router::prelude::*;
 use gloo_events::EventListener;
-use web_sys::{window, HtmlMediaElement, Element, EventTarget};
 use js_sys::Object;
 use wasm_bindgen::JsCast;
+use web_sys::{window, Element, EventTarget, HtmlMediaElement};
+use yew::{function_component, html, use_effect, Callback, Event, Html, MouseEvent};
+use yew_router::prelude::*;
 
 use crate::Route;
 
 #[function_component(Projects)]
-pub fn projects() -> Html { 
+pub fn projects() -> Html {
     let navigator = use_navigator().unwrap();
+    let navigator_ll = navigator.clone();
 
     use_effect({
         move || {
             let mut fullscreenchange_listener = None;
             if let Some(element) = window().unwrap().document() {
                 let onfullscreenchange = Callback::from(move |_: Event| {
-                    if window().unwrap().document().unwrap().fullscreen_element().is_none() {
-                        let item = Object::from(window().unwrap().document().unwrap().get_elements_by_class_name("video"));
+                    if window()
+                        .unwrap()
+                        .document()
+                        .unwrap()
+                        .fullscreen_element()
+                        .is_none()
+                    {
+                        let item = Object::from(
+                            window()
+                                .unwrap()
+                                .document()
+                                .unwrap()
+                                .get_elements_by_class_name("video"),
+                        );
                         let array = Object::values(&item);
                         array.iter().for_each(move |el| {
                             let el = HtmlMediaElement::from(el);
-                            el.clone().remove_attribute("controls").expect("Element successfully drops controls attribute");
+                            el.clone()
+                                .remove_attribute("controls")
+                                .expect("Element successfully drops controls attribute");
                             el.clone().pause().unwrap()
                         });
                     }
                 });
-                let listener = EventListener::new(
-                    &element,
-                    "fullscreenchange",
-                    move |e| onfullscreenchange.emit(e.clone())
-                );
+                let listener = EventListener::new(&element, "fullscreenchange", move |e| {
+                    onfullscreenchange.emit(e.clone())
+                });
                 fullscreenchange_listener = Some(listener);
             }
             move || drop(fullscreenchange_listener)
         }
     });
 
-    let onclick:Callback<MouseEvent> = Callback::from(move |_| navigator.push(&Route::Videos));
+    let onclick: Callback<MouseEvent> = Callback::from(move |_| navigator.push(&Route::Videos));
+    let onclick_ll: Callback<MouseEvent> =
+        Callback::from(move |_| navigator_ll.push(&Route::LiftLog));
 
     let onmouseenter = {
         Callback::from(move |e: MouseEvent| {
             let target: Option<EventTarget> = e.target();
             let input = target.and_then(|t| t.dyn_into::<Element>().ok());
-            let video = input.unwrap().get_elements_by_tag_name("video")
-                .get_with_index(0).expect("There should be a video element")
-                .dyn_into::<HtmlMediaElement>().ok();
+            let video = input
+                .unwrap()
+                .get_elements_by_tag_name("video")
+                .get_with_index(0)
+                .expect("There should be a video element")
+                .dyn_into::<HtmlMediaElement>()
+                .ok();
             if let Some(video) = video {
                 video.set_muted(true);
                 let _result = wasm_bindgen_futures::JsFuture::from(video.play().unwrap());
@@ -56,34 +75,47 @@ pub fn projects() -> Html {
         Callback::from(move |e: MouseEvent| {
             let target: Option<EventTarget> = e.target();
             let input = target.and_then(|t| t.dyn_into::<Element>().ok());
-            let video = input.unwrap().get_elements_by_tag_name("video")
-                .get_with_index(0).expect("There should be a video element")
-                .dyn_into::<HtmlMediaElement>().ok();
+            let video = input
+                .unwrap()
+                .get_elements_by_tag_name("video")
+                .get_with_index(0)
+                .expect("There should be a video element")
+                .dyn_into::<HtmlMediaElement>()
+                .ok();
             if let Some(video) = video {
                 video.pause().unwrap()
             }
         })
     };
-    let onclick_fs ={
+    let onclick_fs = {
         Callback::from(move |e: MouseEvent| {
             let target: Option<EventTarget> = e.target();
             let input = target.and_then(|t| t.dyn_into::<Element>().ok());
-            let video = input.unwrap().parent_element()
-                .unwrap().parent_element()
-                .unwrap().parent_element()
-                .unwrap().get_elements_by_tag_name("video")
-                .get_with_index(0).expect("There should be a video element")
-                .dyn_into::<HtmlMediaElement>().ok();
+            let video = input
+                .unwrap()
+                .parent_element()
+                .unwrap()
+                .parent_element()
+                .unwrap()
+                .parent_element()
+                .unwrap()
+                .get_elements_by_tag_name("video")
+                .get_with_index(0)
+                .expect("There should be a video element")
+                .dyn_into::<HtmlMediaElement>()
+                .ok();
             if let Some(video) = video {
-                video.set_controls(true); 
-                video.request_fullscreen().expect("Video should go fullscreen")
+                video.set_controls(true);
+                video
+                    .request_fullscreen()
+                    .expect("Video should go fullscreen")
             }
         })
     };
 
     html! {
         <div class="projects-container" id="projects">
-            <a id="projectsMarker"></a> 
+            <a id="projectsMarker"></a>
             <header>
                 <p>{"\u{1F980} This website was built with:"}</p>
                 <div class="techTags">
@@ -111,11 +143,12 @@ pub fn projects() -> Html {
             /* Project 1 */
             <div class="weightlifting_log" onmouseenter={onmouseenter.clone()} onmouseleave={onmouseleave.clone()}>
                 <div class="project-inner">
-                <h3><a onclick={onclick_fs.clone()}>{"Weightlifting Log"}</a></h3>
+                <h3><a onclick={onclick_fs.clone()}>{"LiftLog"}</a></h3>
                 <div class="project-nav">
-                    <a href="https://lifting-log.netlify.app/" target="_blank">{"Site"}</a>
-                    <a href="https://github.com/co-decode/liftingHistory" target="_blank">{"Source"}</a>
-                    <a onclick={onclick.clone()} href="#toLL">{"Video"}</a>
+                    <a onclick={onclick_ll.clone()} href="">{"Details"}</a>
+                    <a onclick={onclick_ll.clone()} href="#v3">{"v3"}</a>
+                    <a onclick={onclick_ll.clone()} href="#v2">{"v2"}</a>
+                    <a onclick={onclick_ll.clone()} href="#v1">{"v1"}</a>
                 </div>
                 </div>
 
@@ -177,7 +210,7 @@ pub fn projects() -> Html {
             </div>
 
             /* Project 2 */
-            
+
             <div class="fitness_store" onmouseenter={onmouseenter.clone()} onmouseleave={onmouseleave.clone()}>
                 <div class="project-inner">
                 <h3><a onclick={onclick_fs.clone()}>{"Fitness Store"}</a></h3>
@@ -251,7 +284,7 @@ pub fn projects() -> Html {
                 <div class="project-inner">
                 <h3><a>{"Connect Four"}</a></h3>
                 <div class="project-nav">
-                    <a href="https://connectfour-production.up.railway.app/" target="_blank">{"Site"}</a>
+                    // <a href="https://connectfour-production.up.railway.app/" target="_blank">{"Site"}</a>
                     <a href="https://github.com/co-decode/connectFour" target="_blank">{"Source"}</a>
                     <a onclick={onclick.clone()} href="#toCF">{"Video"}</a>
                 </div>
@@ -315,7 +348,7 @@ pub fn projects() -> Html {
                     </span>
                 </div>
             </div> */
-            
+
             /* Project 4 */
 
             <div class="sheet_music_generator" onmouseenter={onmouseenter.clone()} onmouseleave={onmouseleave.clone()}>
@@ -392,8 +425,8 @@ pub fn projects() -> Html {
             </div>
 
             /* Project 6 */
-    
-            <div class="lift_equivalence_calculator" 
+
+            <div class="lift_equivalence_calculator"
                /*  onmouseenter={onmouseenter.clone()} onmouseleave={onmouseleave.clone()} */>
                 <div class="project-inner">
                 <h3><a>{"Lift Equivalence Calculator"}</a></h3>
@@ -433,7 +466,7 @@ pub fn projects() -> Html {
                     </span>
                 </div>
             </div>
-            
+
         </div>
     }
 }

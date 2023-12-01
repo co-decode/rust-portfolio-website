@@ -3,6 +3,7 @@ use yew::prelude::*;
 use web_sys::{Event, EventTarget, console, Element, HtmlInputElement, HtmlTextAreaElement};
 use wasm_bindgen::{JsCast, /* JsValue */};
 use gloo_net::http::Request;
+use gloo_timers::callback::Timeout;
 use serde::{Serialize, Deserialize};
 
 #[derive(Clone, PartialEq, Deserialize)]
@@ -22,14 +23,17 @@ pub fn contact() -> Html {
     let contact_name:UseStateHandle<String> = use_state(||"".into());
     let contact_email:UseStateHandle<String> = use_state(||"".into());
     let contact_message:UseStateHandle<String> = use_state(||"".into());
+    let message_received:UseStateHandle<bool> = use_state(||false);
 
     let name_ref = use_node_ref();
     let email_ref = use_node_ref();
     let message_ref = use_node_ref();
+    let toast_ref = use_node_ref();
 
     let n_ref = name_ref.clone();
     let e_ref = email_ref.clone();
     let m_ref = message_ref.clone();
+    let t_ref = toast_ref.clone();
 
     // let dep_name = contact_name.clone();
     // let dep_email = contact_email.clone();
@@ -73,10 +77,21 @@ pub fn contact() -> Html {
             contact_message.set("".to_string());
         })
     };
-
-    // use_effect_with_deps(move |_| {
-    //     console::log_1(&JsValue::from_str(&*contact_name.to_string()));
-    // }, (dep_name, dep_email, dep_message));
+    
+    {
+        let m_received = message_received.clone();
+        let toast_ref = toast_ref.clone();
+    use_effect_with(message_received.clone(), move |_| {
+        if *m_received {
+            let timeout = Timeout::new(5_000, move|| {
+                m_received.set(false);
+                toast_ref.cast::<Element>().unwrap().class_list().remove_1("active").ok().unwrap();
+            });
+            timeout.forget();
+        //console::log_1(&JsValue::from_str(&*contact_name.to_string()));
+        }
+    });
+    };
 
     let onsubmit:Callback<SubmitEvent> = {
         let data = Mail {
@@ -89,10 +104,12 @@ pub fn contact() -> Html {
             let contact_name = contact_name.clone();
             let contact_email = contact_email.clone();
             let contact_message = contact_message.clone();
-            
+            let message_received = message_received.clone();
+        
             let name_ref = name_ref.clone();
             let email_ref = email_ref.clone();
             let message_ref = message_ref.clone();
+            let toast_ref = toast_ref.clone();
 
             let json_data = serde_json::to_string(&data).ok().unwrap();
             Event::prevent_default(&submit_event); 
@@ -113,6 +130,8 @@ pub fn contact() -> Html {
                 name_ref.cast::<HtmlInputElement>().unwrap().set_value("");
                 email_ref.cast::<HtmlInputElement>().unwrap().set_value("");
                 message_ref.cast::<HtmlTextAreaElement>().unwrap().set_value("");
+                toast_ref.cast::<Element>().unwrap().class_list().add_1("active").ok().unwrap();
+                message_received.set(true);
             }
             else if fetched_script.success == 2 {console::log_1(&"The message was unable to be sent".into())}
             else if fetched_script.success == 0 {console::log_1(&"Please ensure the input is valid".into())}
@@ -144,6 +163,9 @@ pub fn contact() -> Html {
             <div class="contact-buttons">
                 <button type="submit" class="contact-submit">{"SEND MESSAGE"}</button>
                 <button type="reset" class="contact-clear" onclick={onclick.clone()}>{"CLEAR"}</button>
+                <div ref={t_ref} class="contact-toast">
+                    <div>{"Thank you for your message!"}</div>
+                </div>
             </div>
         </form>
         </div>

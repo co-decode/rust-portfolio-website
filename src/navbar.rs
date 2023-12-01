@@ -1,5 +1,5 @@
 use yew::{function_component, Html, html, Properties};
-use yew::functional::use_effect_with_deps;
+use yew::functional::use_effect_with;
 use web_sys::{ /* console ,*/ window, /* Element, */ /* DomTokenList */};
 
 #[derive(Properties, PartialEq)]
@@ -11,7 +11,7 @@ pub struct Props {
 pub fn return_navbar(props: &Props) -> Html {
     let document = window().unwrap().document().unwrap();
     let scr_y = props.scr_y.clone();
-    use_effect_with_deps(
+    use_effect_with(scr_y, 
         move |_| {
             if scr_y + 10.0 + f64::from(document.get_element_by_id("navbar").unwrap().client_height()) > window().unwrap().inner_height().unwrap().as_f64().unwrap() {
                 document.get_element_by_id("navbar").unwrap().class_list().remove_1("anchor")
@@ -25,7 +25,6 @@ pub fn return_navbar(props: &Props) -> Html {
                     .expect("fixed class should be removed from navbar element");
             }
         },
-        scr_y,
     );
 
     html! { 

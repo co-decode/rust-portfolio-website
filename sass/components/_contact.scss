@@ -71,6 +71,7 @@ form textarea {
     border: 2px solid var(--text);
 }
 .contact-buttons {
+    position:relative;
     padding-top: 2em;
     display: flex;
     flex-wrap:wrap;
@@ -89,35 +90,19 @@ form textarea {
     background-color:transparent;
     border:2px var(--text) solid;
 }
-/* 
-.contact-footer {
-    font-family:monospace;
-    position: absolute;
-    bottom:1em;
-    width: 100%;
-    display:flex;
-    justify-content: center;
-    align-items: center;
-    gap:10px;
-    font-size:small;
-
-    & > a:hover {
-        color:var(--hl)
-    }
+.contact-toast {
+    display:hidden;
+	opacity:0;
+    position:absolute;
+    top:100%;
+    margin: 1em 0;
+    padding:0.5em 1em;
+    border-radius:5px;
+    background-color: var(--text);
+    color:var(--bg);
+	transition:opacity 0.3s;
 }
-.contact-techTags{
-    display:flex;
-    gap:5px;
-
-    & > span > img {
-        width:16px;
-        height:16px;
-        // filter:brightness(0) saturate(100%);
-
-        @media (width < 361px) {
-            width: 16px;
-            height:16px;
-        }
-    }
+.contact-toast.active {
+    display:block;
+	opacity: 1;
 }
-*/

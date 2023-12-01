@@ -9,6 +9,7 @@ mod projects;
 mod contact;
 
 mod videos;
+mod liftlog;
 
 #[derive(Clone, Routable, PartialEq)]
 pub enum Route {
@@ -16,6 +17,8 @@ pub enum Route {
     Home,
     #[at("/videos")]
     Videos,
+    #[at("/liftlog")]
+    LiftLog,
     #[not_found]
     #[at("/404")]
     NotFound,
@@ -25,6 +28,7 @@ fn switch(routes: Route) -> Html {
     match routes {
         Route::Home => html! {<Home />},
         Route::Videos => html! {<videos::Videos />},
+        Route::LiftLog => html! {<liftlog::LiftLog />},
         Route::NotFound => html! {<Home />},
     }
 }
